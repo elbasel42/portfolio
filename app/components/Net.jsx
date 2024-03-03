@@ -44,7 +44,7 @@ export const Net = () => {
       onClick={() => changeNetColor()}
         id="netElem"
         className={twMerge(
-          "duration-1000 fixed inset-0 h-screen w-screen",
+          "duration-1000 -z-10 fixed inset-0 h-screen w-screen",
           bgHidden && "opacity-0"
         )}
       ></div>
