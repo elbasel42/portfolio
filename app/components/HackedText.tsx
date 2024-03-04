@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { getRandomLetter } from "@app/utils/getRandomLetter";
 import { twMerge } from "tailwind-merge";
-import { useIntersectionObserver } from "@app/hooks";
 
 interface HackedTextProps {
   text: string;
@@ -13,7 +12,6 @@ interface HackedTextProps {
 export const HackedText = ({ text, className = "" }: HackedTextProps) => {
   const [iteration, setIteration] = useState(0);
   const [hackedText, setHackedText] = useState(text);
-  const { isIntersecting, ref } = useIntersectionObserver({});
 
   const randomizeLetters = () => {
     const randomText = text
@@ -32,18 +30,16 @@ export const HackedText = ({ text, className = "" }: HackedTextProps) => {
   };
 
   useEffect(() => {
-    if (!isIntersecting) return setIteration(0);
     if (iteration > text.length) return;
     setTimeout(() => {
       randomizeLetters();
     }, iteration * 100);
     setIteration((prev) => prev + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iteration, isIntersecting]);
+  }, [iteration]);
 
   return (
     <span
-      ref={ref}
       className={twMerge("select-none font-mono block", className)}
       onMouseEnter={onMouseEnter}
     >
