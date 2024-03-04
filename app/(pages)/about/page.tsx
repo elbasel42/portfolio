@@ -11,7 +11,7 @@ const AboutPage = () => {
   return (
     <SlideInFromBottom>
       <Dots />
-      <main className="h-screen overflow-y-auto">
+      <main className="h-screen overflow-y-auto scrollbar-thin scrollbar-track-rounded-3xl scrollbar-thumb-rounded-3xl scrollbar-track-black scrollbar-thumb-red-600">
         <div className="h-screen flex justify-center items-center">
           <h1 className={twMerge("text-5xl select-none", pacifico.className)}>
             Frontend Dev
