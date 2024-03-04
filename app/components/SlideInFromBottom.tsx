@@ -1,15 +1,30 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface SlideInFromBottomProps {
   children: ReactNode;
 }
 
 export const SlideInFromBottom = ({ children }: SlideInFromBottomProps) => {
+  const [className, setClassName] = useState("");
+
+  useEffect(() => {
+    // setTransition("translate-y-1000");
+    setClassName("translate-y-0");
+  }, []);
+
   return (
-    <div className="relative transition-all duration-6000 animate-in slide-in-from-bottom-screen">
-      {children}
+    <div className="h-screen overflow-hidden">
+      <div
+        className={twMerge(
+          "transition-transform duration-3000 translate-y-1000",
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 };

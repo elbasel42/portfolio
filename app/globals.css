@@ -6,7 +6,6 @@ body {
   color: white;
   background-color: black;
   min-height: 100vh;
-  overflow-y: hidden;
 }
 
 @layer utilities {

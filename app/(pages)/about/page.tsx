@@ -1,3 +1,5 @@
+"use client";
+
 import { Dots, SlideInFromBottom } from "@app/components";
 import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
