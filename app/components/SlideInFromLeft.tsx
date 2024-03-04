@@ -22,7 +22,8 @@ export const SlideInFromLeft = ({
   }, [isIntersecting]);
 
   return (
-    <div className="w-[50vw] overflow-hidden flex justify-end justify-self-end" ref={ref}>
+    <div className="w-[50vw] overflow-hidden flex justify-end pr-8" ref={ref}>
+
       <div
         style={{
           transitionDuration: `${duration}ms`,

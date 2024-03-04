@@ -21,7 +21,6 @@ export const SlideIn = ({
   const { isIntersecting, ref } = useIntersectionObserver({});
 
   useEffect(() => {
-    console.log({ isIntersecting });
     if (!isIntersecting) return setTransition("translate-y-full");
     setTimeout(() => {
       setTransition("translate-y-0");
