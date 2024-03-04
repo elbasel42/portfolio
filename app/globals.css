@@ -16,6 +16,16 @@ body {
   .fade-in {
     animation: fade-in 6s;
   }
+
+  .bounce {
+    animation-name: bounce;
+    animation-duration: 3s;
+    animation-iteration-count: 5;
+  }
+
+  .app-scrollbar {
+    @apply scrollbar-thin scrollbar-track-rounded-3xl scrollbar-thumb-rounded-3xl scrollbar-track-black scrollbar-thumb-red-600;
+  }
 }
 
 @keyframes fade-in {
@@ -24,5 +34,30 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
   }
 }
