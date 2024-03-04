@@ -7,12 +7,14 @@ interface SlideInProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  duration?: number;
 }
 
 export const SlideIn = ({
   className = "",
   children,
-  delay = 1000,
+  delay = 0,
+  duration = 2000,
 }: SlideInProps) => {
   const [transition, setTransition] = useState("");
 
@@ -26,8 +28,12 @@ export const SlideIn = ({
   return (
     <div className="overflow-hidden">
       <span
+        style={{
+          transitionDuration: `${duration}ms`,
+          animationDuration: `${duration}ms`,
+        }}
         className={twMerge(
-          "block text-3xl transition-transform duration-2000 transform translate-y-full",
+          "block text-3xl transition-transform transform translate-y-full",
           className,
           transition
         )}
