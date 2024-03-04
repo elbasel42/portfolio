@@ -8,7 +8,7 @@ export const Bio = () => {
       </p>
       <p className="my-8">
         I then got interested in switching careers to software development after
-        which I started out as Data Analyst for a call center company where I
+        which I started out as a Data Analyst for a call center company where I
         managed call ques and generated reports for clients using Python, numpy
         and pandas.
       </p>
