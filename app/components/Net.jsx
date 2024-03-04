@@ -8,11 +8,9 @@ export const Net = () => {
   const [threeLoaded, setThreeLoaded] = useState(false);
   const [vantaLoaded, setVantaLoaded] = useState(false);
   const [bgHidden, setBgHidden] = useState(true);
-  const [effect, setEffect] = useState();
+  const [vantaEffect, setVantaEffect] = useState();
 
-  useEffect(() => {
-    if (!threeLoaded || !vantaLoaded) return;
-
+  const initVanta = () => {
     const effect = VANTA.NET({
       el: "#netElem",
       mouseControls: true,
@@ -23,28 +21,45 @@ export const Net = () => {
       backgroundColor: 0x0,
       color: 0xff0000,
     });
-    setEffect(effect)
     setBgHidden(false);
+    setVantaEffect(effect);
+  };
 
-    return () => {
-      effect.destroy();
-    };
+  const destroyEffect = () => {
+    if (vantaEffect) vantaEffect.destroy();
+  };
+
+  //* initial load
+  useEffect(() => {
+    if (!threeLoaded || !vantaLoaded) return;
+    initVanta();
+    return destroyEffect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threeLoaded, vantaLoaded]);
 
- const changeNetColor = () => {
-    const randomColor = getRandomColor()
+  //* subsequent loading when navigating from another page
+  useEffect(() => {
+    try {
+      initVanta();
+    } catch (error) {}
+    return destroyEffect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const changeNetColor = () => {
+    const randomColor = getRandomColor();
     effect.setOptions({
-        color: randomColor
-    })
- } 
+      color: randomColor,
+    });
+  };
 
   return (
     <>
       <div
-      onClick={() => changeNetColor()}
+        onClick={() => changeNetColor()}
         id="netElem"
         className={twMerge(
-          "duration-1000 -z-10 fixed inset-0 h-screen w-screen",
+          "duration-2000 -z-10 fixed inset-0 h-screen w-screen",
           bgHidden && "opacity-0"
         )}
       ></div>

@@ -1,14 +1,18 @@
 import { Net } from "@app/components/Net";
-import Link from "next/link";
+import { HomeLink } from "@app/components/HomeLink";
 
 const HomePage = () => {
   return (
-    <main className="flex items-center flex-col justify-center h-screen">
-      <h1 className="text-3xl text-red-800">HomePage</h1>
-      <Link className="text-3xl text-blue-800" href="/about">
-        About
-      </Link>
-
+    <main className="flex flex-col items-center justify-center h-screen">
+      <h1 className="mb-4 text-4xl font-bold text-center text-red-800 md:text-6xl lg:text-8xl neonText fade-in">
+        Abdelrahman Elbasel
+      </h1>
+      <nav>
+        <HomeLink href="/about" text="about" />
+        <HomeLink href="/contact" text="contact" />
+        <HomeLink href="/projects" text="projects" />
+        <HomeLink href="/experience" text="experience" />
+      </nav>
       <Net />
     </main>
   );

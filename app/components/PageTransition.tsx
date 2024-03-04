@@ -5,19 +5,15 @@ import { twMerge } from "tailwind-merge";
 
 interface PageTransitionProps {
   children: ReactNode;
-  className: string;
-  transition: string;
+  from: string;
+  to: string;
 }
-export const PageTransition = ({
-  children,
-  className,
-  transition,
-}: PageTransitionProps) => {
-  const [transitionClass, setTransitionClass] = useState("");
+export const PageTransition = ({ children, from, to }: PageTransitionProps) => {
+  const [className, setClassName] = useState("");
 
   useEffect(() => {
-    setTransitionClass(transition);
-  }, [transition]);
+    setClassName(to);
+  }, [to]);
 
-  return <div className={twMerge(className, transitionClass)}>{children}</div>;
+  return <div className={twMerge("transform transition-all duration-2000", from, className)}>{children}</div>;
 };
