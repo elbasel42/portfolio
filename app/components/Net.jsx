@@ -19,7 +19,7 @@ export const Net = () => {
       scale: 1.0,
       scaleMobile: 1.0,
       backgroundColor: 0x0,
-      color: 0x1c1cde,
+      color: 0x682e2e,
     });
     setBgHidden(false);
     return effect;

@@ -1,5 +1,6 @@
 "use client";
 
+import { useIntersectionObserver } from "@app/hooks";
 import { ReactNode, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -17,16 +18,19 @@ export const SlideIn = ({
   duration = 2000,
 }: SlideInProps) => {
   const [transition, setTransition] = useState("");
+  const { isIntersecting, ref } = useIntersectionObserver({});
 
   useEffect(() => {
+    console.log({ isIntersecting });
+    if (!isIntersecting) return setTransition("translate-y-full");
     setTimeout(() => {
       setTransition("translate-y-0");
     }, delay);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isIntersecting]);
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden" ref={ref}>
       <span
         style={{
           transitionDuration: `${duration}ms`,
