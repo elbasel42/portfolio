@@ -11,7 +11,6 @@ export const SlideInFromBottom = ({ children }: SlideInFromBottomProps) => {
   const [className, setClassName] = useState("");
 
   useEffect(() => {
-    // setTransition("translate-y-1000");
     setClassName("translate-y-0");
   }, []);
 
