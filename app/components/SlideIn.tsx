@@ -27,7 +27,7 @@ export const SlideIn = ({
     <div className="overflow-hidden">
       <span
         className={twMerge(
-          "block text-3xl duration-3000 transform translate-y-full",
+          "block text-3xl transition-transform duration-2000 transform translate-y-full",
           className,
           transition
         )}

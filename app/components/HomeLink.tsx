@@ -12,9 +12,9 @@ export const HomeLink = ({ href, text, delay = 1000 }: HomeLinkProps) => {
     <Link href={href}>
       <SlideIn
         delay={delay}
-        className="px-4 text-3xl text-center text-red-500 rounded-2xl hover:text-white hover:bg-red-600"
+        className="text-3xl text-center text-red-500 rounded-2xl hover:text-white hover:bg-red-600"
       >
-        <HackedText text={text} />
+        <HackedText text={text} className="px-4 py-2"/>
       </SlideIn>
     </Link>
   );
