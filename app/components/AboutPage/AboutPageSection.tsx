@@ -13,14 +13,14 @@ export const AboutPageSection = ({
   id,
 }: AboutPageSection) => {
   return (
-    <div
+    <section
       id={id}
       className={twMerge(
-        "h-screen snap-center py-4 px-8 flex flex-col items-center",
+        "h-screen relative snap-center py-4 px-8 flex flex-col items-center",
         className
       )}
     >
       {children}
-    </div>
+    </section>
   );
 };

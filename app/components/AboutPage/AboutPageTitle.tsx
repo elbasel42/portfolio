@@ -12,13 +12,15 @@ interface AboutPageProps {
 
 export const AboutPageTitle = ({ text }: AboutPageProps) => {
   return (
-    <SlideIn
-      className={twMerge(
-        "mt-8 md:mt-20 text-red-600 text-6xl text-center",
-        pacifico.className
-      )}
-    >
-      {text}
-    </SlideIn>
+    <h2>
+      <SlideIn
+        className={twMerge(
+          "mt-2 md:mt-6 text-red-600 text-4xl md:text-6xl text-center",
+          pacifico.className
+        )}
+      >
+        {text}
+      </SlideIn>
+    </h2>
   );
 };

@@ -1,19 +1,14 @@
-import { Pacifico } from "next/font/google";
-import { Dots, SlideInFromBottom } from "@app/components";
-import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbArrowBackUpDouble } from "react-icons/tb";
+import { Dots, SlideInFromBottom } from "@app/components";
 import {
+  ABoutPageMainTitle,
+  AboutPageDownArrow,
   AboutPageSection,
   AboutPageTitle,
   Bio,
 } from "@app/components/AboutPage";
-import Link from "next/link";
-
-const pacifico = Pacifico({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const AboutPage = () => {
   return (
@@ -27,27 +22,16 @@ const AboutPage = () => {
       <Dots />
       <main className="h-screen overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
         <AboutPageSection className="relative justify-center">
-          <h1
-            className={twMerge(
-              "text-center text-5xl select-none",
-              pacifico.className
-            )}
-          >
-            Frontend Developer
-          </h1>
-          <a href="#bio">
-            <IoIosArrowDown className="absolute w-8 h-8 bounce bottom-8" />
-          </a>
+          <ABoutPageMainTitle />
+          <AboutPageDownArrow href="#bio" />
         </AboutPageSection>
-        <AboutPageSection id="bio">
+        <AboutPageSection id="bio" className="relative">
           <AboutPageTitle text="Bio" />
           <Bio />
+          <AboutPageDownArrow href="#tech" />
         </AboutPageSection>
-        <AboutPageSection>
-          <AboutPageSection>
-            <AboutPageTitle text="Tools" />
-          </AboutPageSection>
-          <AboutPageTitle text="Tools" />
+        <AboutPageSection id="tech">
+          <AboutPageTitle text="Technologies" />
         </AboutPageSection>
       </main>
     </SlideInFromBottom>
