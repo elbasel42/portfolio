@@ -20,9 +20,6 @@ const config: Config = {
   },
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   safelist: ["translate-y-screen", "translate-y-1000"],
-  plugins: [
-    require("tailwindcss-animate"),
-    require("tailwind-scrollbar")({ nocompatible: true }),
-  ],
+  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };
 export default config;
