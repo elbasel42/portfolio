@@ -25,7 +25,6 @@ export const Net = () => {
     return effect;
   };
 
-  //* initial load
   useEffect(() => {
     if (!threeReady || !vantaReady) return;
 
@@ -67,10 +66,12 @@ export const Net = () => {
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
         onReady={() => setThreeReady(true)}
+        onError={(e) => console.log(e)}
       />
       <Script
         src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"
         onReady={() => setVantaReady(true)}
+        onError={(e) => console.log(e)}
       />
     </>
   );
