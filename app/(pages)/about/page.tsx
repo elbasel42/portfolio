@@ -18,14 +18,14 @@ const AboutPage = () => {
         href="/"
         className="fixed z-20 px-2 py-2 transform border rounded-lg transition-all duration-2000 hover:rotate-[360deg] active:rotate-[360deg] top-4 border-white/50 right-4"
       >
-        <TbArrowBackUpDouble className="w-8 h-8 active:scale-125 hover:scale-125" />
+        <TbArrowBackUpDouble className="md:w-8 md:h-8 active:scale-125 hover:scale-125" />
       </Link>
       <Link
-        className="fixed z-20 flex flex-col gap-2 px-2 py-2 border rounded-lg hover:scale-125 mr-14 top-4 border-white/50 right-4"
+        className="fixed z-20 flex flex-col gap-2 px-2 py-2 mr-10 border rounded-lg hover:scale-125 md:mr-14 top-4 border-white/50 right-4"
         href="/Abdelrahman-Elbasel-Resume.pdf"
         download="Abdelrahman-Elbasel-Resume.pdf"
       >
-        <FaDownload className="w-8 h-8 active:scale-125 hover:bounce" />
+        <FaDownload className="md:w-8 md:h-8 active:scale-125 hover:bounce" />
       </Link>
       <Dots />
       <main className="h-screen overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
