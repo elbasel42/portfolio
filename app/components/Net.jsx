@@ -25,6 +25,13 @@ export const Net = () => {
     setVantaEffect(effect);
   };
 
+  const resizeVanta = () => {
+    if (!vantaEffect) return;
+    setTimeout(() => {
+      vantaEffect.resize();
+    }, 1000);
+  };
+
   const destroyEffect = () => {
     if (vantaEffect) vantaEffect.destroy();
   };
@@ -33,7 +40,11 @@ export const Net = () => {
   useEffect(() => {
     if (!threeLoaded || !vantaLoaded) return;
     initVanta();
-    return destroyEffect();
+    window.addEventListener("resize", resizeVanta);
+    return () => {
+      destroyEffect();
+      window.removeEventListener("resize", resizeVanta);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threeLoaded, vantaLoaded]);
 
@@ -41,8 +52,13 @@ export const Net = () => {
   useEffect(() => {
     try {
       initVanta();
+      window.addEventListener("resize", resizeVanta);
     } catch (error) {}
-    return destroyEffect();
+
+    return () => {
+      destroyEffect();
+      window.removeEventListener("resize", resizeVanta);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

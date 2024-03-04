@@ -7,7 +7,7 @@ const HomePage = () => {
       <h1 className="mb-4 text-4xl font-bold text-center text-red-800 md:text-6xl lg:text-8xl neonText fade-in">
         Abdelrahman Elbasel
       </h1>
-      <nav>
+      <nav className="flex flex-col lg:flex-row">
         <HomeLink href="/about" text="about" />
         <HomeLink href="/contact" text="contact" />
         <HomeLink href="/projects" text="projects" />

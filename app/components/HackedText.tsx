@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import { getRandomLetter } from "@app/utils/getRandomLetter";
 
-export const HackedText = ({ text }: { text: string }) => {
+interface HackedTextProps {
+  text: string;
+}
+
+export const HackedText = ({ text }: HackedTextProps) => {
   const [iteration, setIteration] = useState(0);
   const [hackedText, setHackedText] = useState(text);
 
