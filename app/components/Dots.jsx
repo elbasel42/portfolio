@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { getRandomColor } from "@app/utils";
+import { sleep } from "@app/utils";
 
 export const Dots = () => {
   const [threeReady, setThreeReady] = useState(false);
