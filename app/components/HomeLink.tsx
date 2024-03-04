@@ -1,19 +1,19 @@
 import Link from "next/link";
-import { HackedText } from "./HackedText";
-import { SlideIn } from "./SlideIn";
+import { HackedText, SlideIn } from "@app/components";
 
 interface HomeLinkProps {
   href: string;
   text: string;
+  delay?: number;
 }
 
-export const HomeLink = ({ href, text }: HomeLinkProps) => {
+export const HomeLink = ({ href, text, delay = 1000 }: HomeLinkProps) => {
   return (
-    <Link
-      className="px-4 text-3xl text-center text-red-500 hover:text-white hover:bg-red-600"
-      href={href}
-    >
-      <SlideIn>
+    <Link href={href}>
+      <SlideIn
+        delay={delay}
+        className="px-4 text-3xl text-center text-red-500 rounded-2xl hover:text-white hover:bg-red-600"
+      >
         <HackedText text={text} />
       </SlideIn>
     </Link>

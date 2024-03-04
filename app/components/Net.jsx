@@ -1,8 +1,8 @@
 "use client";
 import Script from "next/script";
-import { twMerge } from "tailwind-merge";
 import { useEffect, useState } from "react";
-import { getRandomColor } from "@app/utils/getRandomColor";
+import { twMerge } from "tailwind-merge";
+import { getRandomColor } from "@app/utils";
 
 export const Net = () => {
   const [threeLoaded, setThreeLoaded] = useState(false);

@@ -5,10 +5,15 @@ import { twMerge } from "tailwind-merge";
 
 interface SlideInProps {
   children: ReactNode;
+  className?: string;
   delay?: number;
 }
 
-export const SlideIn = ({ children, delay = 1000 }: SlideInProps) => {
+export const SlideIn = ({
+  className = "",
+  children,
+  delay = 1000,
+}: SlideInProps) => {
   const [transition, setTransition] = useState("");
 
   useEffect(() => {
@@ -23,6 +28,7 @@ export const SlideIn = ({ children, delay = 1000 }: SlideInProps) => {
       <span
         className={twMerge(
           "block text-3xl duration-3000 transform translate-y-full",
+          className,
           transition
         )}
       >

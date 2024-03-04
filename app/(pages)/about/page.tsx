@@ -1,4 +1,4 @@
-import { PageTransition } from "@app/components/PageTransition";
+import { PageTransition } from "@app/components";
 
 const AboutPage = () => {
   return (
@@ -6,7 +6,7 @@ const AboutPage = () => {
       from="translate-y-[100vh] bg-red-600"
       to="translate-y-0 bg-black"
     >
-      <main className="flex items-center justify-center flex-col h-screen">
+      <main className="flex flex-col items-center justify-center h-screen">
         About Page
       </main>
     </PageTransition>
