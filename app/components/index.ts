@@ -6,6 +6,8 @@ import { HomeNav } from "./HomeNav";
 import { Net } from "./Net";
 import { SlideInFromBottom } from "./SlideInFromBottom";
 import { Dots } from "./Dots";
+import { SlideInFromRight } from "./SlideInFromRight";
+import { SlideInFromLeft } from "./SlideInFromLeft";
 
 export {
   Button,
@@ -15,5 +17,7 @@ export {
   Net,
   SlideIn,
   SlideInFromBottom,
+  SlideInFromRight,
+  SlideInFromLeft,
   Dots,
 };

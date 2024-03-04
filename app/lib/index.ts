@@ -1,3 +1,4 @@
 import { routes } from "./routes";
+import { technologies } from "./technologies";
 
-export { routes };
+export { routes, technologies };

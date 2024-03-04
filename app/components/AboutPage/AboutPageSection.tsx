@@ -16,7 +16,8 @@ export const AboutPageSection = ({
     <section
       id={id}
       className={twMerge(
-        "h-screen relative snap-center py-4 px-8 flex flex-col items-center",
+        "h-screen relative snap-center px-2 flex flex-col",
+
         className
       )}
     >

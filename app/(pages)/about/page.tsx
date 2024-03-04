@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { IoIosArrowDown } from "react-icons/io";
 import { TbArrowBackUpDouble } from "react-icons/tb";
 import { Dots, SlideInFromBottom } from "@app/components";
 import {
@@ -8,6 +7,7 @@ import {
   AboutPageSection,
   AboutPageTitle,
   Bio,
+  Technologies,
 } from "@app/components/AboutPage";
 
 const AboutPage = () => {
@@ -21,17 +21,18 @@ const AboutPage = () => {
       </Link>
       <Dots />
       <main className="h-screen overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
-        <AboutPageSection className="relative justify-center">
+        <AboutPageSection className="items-center justify-center">
           <ABoutPageMainTitle />
           <AboutPageDownArrow href="#bio" />
         </AboutPageSection>
-        <AboutPageSection id="bio" className="relative">
+        <AboutPageSection id="bio" className="relative items-center px-4">
           <AboutPageTitle text="Bio" />
           <Bio />
           <AboutPageDownArrow href="#tech" />
         </AboutPageSection>
         <AboutPageSection id="tech">
           <AboutPageTitle text="Technologies" />
+          <Technologies />
         </AboutPageSection>
       </main>
     </SlideInFromBottom>
