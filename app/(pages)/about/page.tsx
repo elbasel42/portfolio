@@ -10,7 +10,7 @@ const pacifico = Pacifico({
 const AboutPage = () => {
   return (
     <PageTransition
-      from="translate-y-[700px] duration-6000 bg-red-600"
+      from="translate-y-[1000px] duration-6000 bg-red-600"
       to="translate-y-0 bg-black"
     >
       <Dots />
