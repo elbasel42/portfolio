@@ -1,19 +1,11 @@
-"use client";
-
 import { TechItem } from "@app/components/AboutPage";
 import { technologies } from "@app/lib";
-import { useWindowSize } from "@app/hooks";
 
 export const Technologies = () => {
-  const { width = 0 } = useWindowSize({
-    initializeWithValue: false,
-  });
-
-  const isMobile = width < 700;
-  const separator = isMobile ? 9 : 6;
+  const separator = technologies.length / 2;
 
   return (
-    <div className="flex mt-8">
+    <div className="flex mt-36 md:mt-8">
       <div className="space-y-4">
         {technologies.slice(0, separator).map((tech, index) => (
           <TechItem
@@ -26,7 +18,7 @@ export const Technologies = () => {
           />
         ))}
       </div>
-      <div className="overflow-hidden">
+      <div className="space-y-4 overflow-hidden">
         {technologies
           .slice(separator, technologies.length)
           .map((tech, index) => (
@@ -34,7 +26,7 @@ export const Technologies = () => {
               Logo={tech.icon}
               title={tech.title}
               slideFrom="left"
-              animDuration={(index + 2) * 1000}
+              animDuration={(index + 3) * 1000}
               className={tech.className}
               key={tech.title}
             />

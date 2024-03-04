@@ -15,7 +15,7 @@ export const AboutPageTitle = ({ text }: AboutPageProps) => {
     <h2>
       <SlideIn
         className={twMerge(
-          "mt-2 md:mt-6 text-red-600 text-4xl md:text-6xl text-center",
+          "mt-8 md:mt-6 text-red-600 text-4xl md:text-6xl text-center",
           pacifico.className
         )}
       >

@@ -18,18 +18,19 @@ export const TechItem = ({
   title = "",
   animDuration = 1000,
   slideFrom = "right",
-  containerClassName = "",
+  containerClassName = slideFrom === "left" ? "flex-row-reverse" : "",
   logoClassName = "",
   titleClassName = "",
   className = "",
 }: TechItemProps) => {
+
   const Container = slideFrom === "right" ? SlideInFromRight : SlideInFromLeft;
 
   return (
     <Container duration={animDuration}>
       <div
         className={twMerge(
-          "flex bg-black/70 items-center gap-2 px-2 py-2 border border-white/50 rounded-3xl",
+          "flex bg-black/70 items-center gap-2 px-2 py-2 rounded-3xl",
           containerClassName
         )}
       >
@@ -43,8 +44,8 @@ export const TechItem = ({
         <SlideIn duration={animDuration}>
           <h2
             className={twMerge(
-              "text-xl md:text-3xl",
-              className,
+              "text-xl md:text-3xl text-white",
+              // className,
               titleClassName
             )}
           >
