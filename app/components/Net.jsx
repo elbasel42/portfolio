@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { getRandomColor } from "@app/utils";
+import { getRandomColor, sleep } from "@app/utils";
 
 export const Net = () => {
   const [threeReady, setThreeReady] = useState(false);
@@ -65,12 +65,12 @@ export const Net = () => {
       ></div>
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-        onReady={() => setThreeReady(true)}
+        onReady={() => sleep(0.5).then(() => setThreeReady(true))}
         onError={(e) => console.log(e)}
       />
       <Script
         src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"
-        onReady={() => setVantaReady(true)}
+        onReady={() => sleep(0.5).then(() => setVantaReady(true))}
         onError={(e) => console.log(e)}
       />
     </>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Dots, SlideInFromBottom } from "@app/components";
+import { Dots, SlideIn, SlideInFromBottom } from "@app/components";
 import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
@@ -19,6 +19,13 @@ const AboutPage = () => {
             Frontend Dev
           </h1>
         </div>
+        <div className="h-screen snap-center py-4 px-8 flex justify-center">
+          <SlideIn className={twMerge("mt-20 text-red-600 text-4xl", pacifico.className)}>
+            Tools
+          </SlideIn>
+        </div>
+        <div className="h-screen snap-center">Second Page</div>
+        <div className="h-screen snap-center">Second Page</div>
         <div className="h-screen snap-center">Second Page</div>
       </main>
     </SlideInFromBottom>
