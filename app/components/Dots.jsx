@@ -51,11 +51,11 @@ export const Dots = () => {
       ></div>
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-        onReady={() => sleep(0.5).then(() => setThreeReady(true))}
+        onReady={() => sleep(1).then(() => setThreeReady(true))}
       />
       <Script
         src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"
-        onReady={() => sleep(0.5).then(() => setVantaReady(true))}
+        onReady={() => sleep(1).then(() => setVantaReady(true))}
       />
     </>
   );

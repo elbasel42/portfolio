@@ -65,12 +65,12 @@ export const Net = () => {
       ></div>
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-        onReady={() => sleep(0.5).then(() => setThreeReady(true))}
+        onReady={() => sleep(1).then(() => setThreeReady(true))}
         onError={(e) => console.log(e)}
       />
       <Script
         src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"
-        onReady={() => sleep(0.5).then(() => setVantaReady(true))}
+        onReady={() => sleep(1).then(() => setVantaReady(true))}
         onError={(e) => console.log(e)}
       />
     </>
