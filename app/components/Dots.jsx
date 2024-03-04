@@ -34,25 +34,9 @@ export const Dots = () => {
 
     const vantaEffect = initVanta();
 
-    const changeColor = () => {
-      const randomColor = getRandomColor();
-      vantaEffect.setOptions({
-        color: randomColor,
-      });
-    };
-
-    const resizeVanta = () => {
-      vantaEffect.resize();
-    };
-
-    window.addEventListener("click", changeColor);
-    window.addEventListener("resize", resizeVanta);
-
     return () => {
       if (!vantaEffect) return;
       vantaEffect.destroy();
-      window.removeEventListener("click", changeColor);
-      window.removeEventListener("resize", resizeVanta);
     };
   }, [threeReady, vantaReady]);
 
