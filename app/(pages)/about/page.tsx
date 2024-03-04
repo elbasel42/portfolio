@@ -1,4 +1,4 @@
-import { Dots, PageTransition } from "@app/components";
+import { Dots, SlideInFromBottom } from "@app/components";
 import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
@@ -9,17 +9,17 @@ const pacifico = Pacifico({
 
 const AboutPage = () => {
   return (
-    <PageTransition
-      from="translate-y-[1000px] duration-6000 bg-red-600"
-      to="translate-y-0 bg-black"
-    >
+    <SlideInFromBottom>
       <Dots />
-      <main className="flex flex-col items-center justify-center h-screen">
-        <h1 className={twMerge("text-5xl select-none", pacifico.className)}>
-          Frontend Dev
-        </h1>
+      <main className="h-screen overflow-y-auto">
+        <div className="h-screen flex justify-center items-center">
+          <h1 className={twMerge("text-5xl select-none", pacifico.className)}>
+            Frontend Dev
+          </h1>
+        </div>
+        <div className="h-screen">Second Page</div>
       </main>
-    </PageTransition>
+    </SlideInFromBottom>
   );
 };
 

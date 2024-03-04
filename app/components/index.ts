@@ -4,7 +4,7 @@ import { HomeLink } from "./HomeLink";
 import { SlideIn } from "./SlideIn";
 import { HomeNav } from "./HomeNav";
 import { Net } from "./Net";
-import { PageTransition } from "./PageTransition";
+import { SlideInFromBottom } from "./SlideInFromBottom";
 import { Dots } from "./Dots";
 
 export {
@@ -14,6 +14,6 @@ export {
   HomeNav,
   Net,
   SlideIn,
-  PageTransition,
+  SlideInFromBottom,
   Dots,
 };
