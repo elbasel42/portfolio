@@ -5,22 +5,28 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { getRandomColor } from "@app/utils";
 
-export const Net = () => {
+export const Dots = () => {
   const [threeLoaded, setThreeLoaded] = useState(false);
   const [vantaLoaded, setVantaLoaded] = useState(false);
   const [bgHidden, setBgHidden] = useState(true);
   const [vantaEffect, setVantaEffect] = useState();
 
   const initVanta = () => {
-    const effect = VANTA.NET({
-      el: "#netElem",
+    const effect = VANTA.DOTS({
+      el: "#dotsElem",
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
       scale: 1.0,
       scaleMobile: 1.0,
+      size: 8.0,
+      spacing: 36.0,
+      showLines: true,
+      color: 0x1c1cde,
+      color2: 0xff0000,
       backgroundColor: 0x0,
-      color: 0xff0000,
     });
     setBgHidden(false);
     setVantaEffect(effect);
@@ -63,7 +69,7 @@ export const Net = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const changeNetColor = () => {
+  const changeDotsColor = () => {
     const randomColor = getRandomColor();
     effect.setOptions({
       color: randomColor,
@@ -73,8 +79,8 @@ export const Net = () => {
   return (
     <>
       <div
-        onClick={() => changeNetColor()}
-        id="netElem"
+        onClick={() => changeDotsColor()}
+        id="dotsElem"
         className={twMerge(
           "duration-2000 -z-10 fixed inset-0 h-screen w-screen",
           bgHidden && "opacity-0"
@@ -85,7 +91,7 @@ export const Net = () => {
         onLoad={() => setThreeLoaded(true)}
       />
       <Script
-        src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"
+        src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"
         onLoad={() => setVantaLoaded(true)}
       />
     </>

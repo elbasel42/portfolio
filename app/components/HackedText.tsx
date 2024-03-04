@@ -40,7 +40,7 @@ export const HackedText = ({ text, className = "" }: HackedTextProps) => {
 
   return (
     <span
-      className={twMerge("font-mono block", className)}
+      className={twMerge("select-none font-mono block", className)}
       onMouseEnter={onMouseEnter}
     >
       {hackedText}

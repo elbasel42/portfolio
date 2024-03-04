@@ -15,5 +15,6 @@ export const PageTransition = ({ children, from, to }: PageTransitionProps) => {
     setClassName(to);
   }, [to]);
 
-  return <div className={twMerge("transform transition-all duration-2000", from, className)}>{children}</div>;
+  return <div className={twMerge("transform transition-all duration-2000 overflow-x-hidden", from, className)}>{children}</div>;
+
 };
