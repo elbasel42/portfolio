@@ -7,12 +7,12 @@ import { validateEmail } from "@app/utils";
 import { type ContactFormValidationError } from "@app/types";
 import { validateFormData } from "./validateFormData";
 
-
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendMail(formData: FormData) {
   const validationError = await validateFormData(formData);
 
   if (validationError !== null) {
+    console.log("Failed to send message with error", validateEmail);
     redirect(`/contact/?error=${encodeURIComponent(validationError)}`);
   }
 
@@ -54,6 +54,6 @@ export async function sendMail(formData: FormData) {
     `,
   });
 
-  console.log("Previous message successful");
+  console.log("Message sent successfully");
   console.log("==================================");
 }

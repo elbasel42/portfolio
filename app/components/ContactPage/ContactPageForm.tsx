@@ -22,7 +22,6 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
   const [formHidden, setFormHidden] = useState(false);
 
   const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
     const formElem = e.target as HTMLFormElement;
     const formData = new FormData(formElem);
     const validationError = await validateFormData(formData);
