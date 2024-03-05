@@ -1,7 +1,8 @@
-import { Globe, SlideIn, SlideInFromBottom } from "@app/components";
-import { ContactPageForm, SocialList } from "@app/components/ContactPage";
 import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
+import { Globe, SlideIn, SlideInFromBottom } from "@app/components";
+import { ContactPageForm, SocialList } from "@app/components/ContactPage";
+import { type ContactFormValidationError } from "@app/types";
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -9,12 +10,11 @@ const pacifico = Pacifico({
 });
 
 interface ContactPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { error: ContactFormValidationError };
 }
 
 const ContactPage = ({ searchParams }: ContactPageProps) => {
   const { error } = searchParams;
-  console.log({ error });
 
   return (
     <SlideInFromBottom>
@@ -33,7 +33,7 @@ const ContactPage = ({ searchParams }: ContactPageProps) => {
             </h1>
           </SlideIn>
         </div>
-        <ContactPageForm />
+        <ContactPageForm error={error} />
       </main>
     </SlideInFromBottom>
   );

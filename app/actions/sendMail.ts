@@ -1,26 +1,20 @@
 "use server";
-import { emailHTML } from "@app/lib/emailHTML";
+
 import { redirect } from "next/navigation";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
+import { emailHTML } from "@app/lib";
+import { validateEmail } from "@app/utils";
+import { type ContactFormValidationError } from "@app/types";
+import { validateFormData } from "./validateFormData";
 
-const validateFormData = (formData: FormData) => {
-  const name = formData.get("name")?.toString();
-  const email = formData.get("email")?.toString();
-  const subject = formData.get("subject")?.toString();
-  const body = formData.get("body")?.toString();
-
-  if (!name || name.length < 1) return "Invalid Name";
-  if (!email || email.length < 1) return "Invalid Email";
-  if (!subject || subject.length < 1) return "Invalid Subject";
-  if (!body || body.length < 1) return "Invalid Message";
-  return "";
-};
 
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendMail(formData: FormData) {
-  const validationError = validateFormData(formData);
-  if (validationError !== "")
+  const validationError = await validateFormData(formData);
+
+  if (validationError !== null) {
     redirect(`/contact/?error=${encodeURIComponent(validationError)}`);
+  }
 
   const name = formData.get("name")?.toString();
   const email = formData.get("email")?.toString();
