@@ -4,12 +4,16 @@ import {
   ContactPageInput,
   ContactPageTextArea,
 } from "@app/components/ContactPage";
+import { sendMail } from "@app/actions";
 
 const inputNames = ["name", "email", "subject"];
 
 export const ContactPageForm = () => {
   return (
-    <form className="mx-auto md:ml-auto mt-[20vh] md:mt-[10vh] space-y-4">
+    <form
+      action={sendMail}
+      className="mx-auto md:ml-auto mt-[20vh] md:mt-[10vh] space-y-4"
+    >
       {inputNames.map((n, index) => (
         <SlideInFromRight
           className="px-1 py-1"
