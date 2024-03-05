@@ -34,7 +34,7 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
   if (formHidden)
     return (
       <SlideIn>
-        <div className="fade-in mx-auto flex justify-center items-center md:mr-[8vw] md:w-[30vw] flex-col gap-4 md:ml-auto mt-[20vh] md:mt-[10vh] text-xl md:text-3xl text-white bg-black/40 rounded-3xl h-fit px-4 py-2 font-mono text-center">
+        <div className="fade-in mx-auto flex justify-center items-center md:mr-[8vw] md:w-[30vw] flex-col gap-4 md:ml-auto mt-[20svh] md:mt-[10svh] text-xl md:text-3xl text-white bg-black/40 rounded-3xl h-fit px-4 py-2 font-mono text-center">
           <p>Your message has been sent! you should hear from me soon!</p>
           <IoIosCheckmarkCircle className="w-8 h-8 md:w-20 md:h-20 text-green-600" />
         </div>
@@ -45,11 +45,11 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
     <form
       action={sendMail}
       onSubmit={onSubmit}
-      className="mx-auto md:w-[38vw] md:ml-auto mt-[15vh] md:mt-[10vh] space-y-4"
+      className="mx-auto md:ml-auto mt-[15svh] md:mt-[10svh] space-y-4"
     >
       {INPUTS.map((n, index) => (
         <SlideInFromRight
-          className="px-1 py-1"
+          className="px-1 py-1 w-full"
           key={n}
           delay={2000}
           duration={(index + 2) * 1000}
@@ -78,7 +78,7 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
         </button>
       </SlideInFromRight>
       {error && (
-        <div className="text-red-300 shake text-center text-2xl">
+        <div className="text-red-300 shake text-center text-lg md:text-2xl">
           {error}, please try again!
         </div>
       )}

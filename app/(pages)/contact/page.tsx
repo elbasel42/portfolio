@@ -19,13 +19,13 @@ const ContactPage = ({ searchParams }: ContactPageProps) => {
   return (
     <SlideInFromBottom>
       <Globe />
-      <main className="flex h-screen py-4">
+      <main className="flex h-[100svh]">
         <SocialList />
-        <div className="absolute top-0 md:static mt-[10vh] text-center w-screen md:w-[40vw] md:h-[80vh] md:mx-auto md:px-8 md:py-4">
+        <div className="absolute top-0 mt-[10svh] md:static text-center w-screen md:w-[40vw] md:h-[80svh] md:mx-auto md:px-8 md:py-4">
           <SlideIn>
             <h1
               className={twMerge(
-                "text-2xl md:text-8xl text-purple-700",
+                "text-2xl md:text-6xl lg:text-8xl text-purple-700",
                 pacifico.className
               )}
             >

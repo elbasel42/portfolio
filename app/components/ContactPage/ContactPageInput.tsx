@@ -23,7 +23,7 @@ export const ContactPageInput = ({
       id={id}
       placeholder={placeholder}
       className={twMerge(
-        "px-4 py-2 rounded-3xl hover:ring-blue-400 hover:ring-1 focus:ring-2 focus:ring-blue-600 transition-colors duration-1000 focus:border-blue-600 md:text-3xl bg-black/80 border border-white/20",
+        "px-4 w-full block py-2 rounded-3xl hover:ring-blue-400 hover:ring-1 focus:ring-2 focus:ring-blue-600 transition-colors duration-1000 focus:border-blue-600 md:text-3xl bg-black/80 border border-white/20",
         className
       )}
     />
