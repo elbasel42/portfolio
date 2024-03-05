@@ -31,12 +31,12 @@ const AboutPage = () => {
       <main className="h-screen overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
         <AboutPageSection className="items-center justify-center">
           <ABoutPageMainTitle />
-          <AboutPageDownArrow href="#bio" />
+          <AboutPageDownArrow id="bio" />
         </AboutPageSection>
         <AboutPageSection id="bio" className="relative items-center px-4">
           <AboutPageTitle text="Bio" />
           <Bio />
-          <AboutPageDownArrow href="#tech" />
+          <AboutPageDownArrow id="tech" />
         </AboutPageSection>
         <AboutPageSection id="tech">
           <AboutPageTitle text="Technologies" />

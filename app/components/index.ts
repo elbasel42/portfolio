@@ -8,6 +8,7 @@ import { SlideInFromBottom } from "./SlideInFromBottom";
 import { Dots } from "./Dots";
 import { SlideInFromRight } from "./SlideInFromRight";
 import { SlideInFromLeft } from "./SlideInFromLeft";
+import { Globe } from "./Globe";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   SlideInFromRight,
   SlideInFromLeft,
   Dots,
+  Globe,
 };

@@ -11,21 +11,21 @@ export const Technologies = () => {
           <TechItem
             Logo={tech.icon}
             title={tech.title}
-            slideFrom="right"
+            slideFrom="left"
             animDuration={(index + 2) * 1000}
             className={tech.className}
             key={tech.title}
           />
         ))}
       </div>
-      <div className="space-y-4 overflow-hidden">
+      <div className="space-y-4 overflow-hidden ml-auto">
         {technologies
           .slice(separator, technologies.length)
           .map((tech, index) => (
             <TechItem
               Logo={tech.icon}
               title={tech.title}
-              slideFrom="left"
+              slideFrom="right"
               animDuration={(index + 3) * 1000}
               className={tech.className}
               key={tech.title}
