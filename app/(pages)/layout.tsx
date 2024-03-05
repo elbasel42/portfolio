@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 import { type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import "../globals.css";
 
@@ -18,6 +19,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+      <Analytics />
     </html>
   );
 };
