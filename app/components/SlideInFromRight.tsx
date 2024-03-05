@@ -25,6 +25,7 @@ export const SlideInFromRight = ({
     setTimeout(() => {
       setTransition("translate-x-0");
     }, delay);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
   return (

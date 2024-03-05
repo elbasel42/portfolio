@@ -2,7 +2,7 @@ export const Bio = () => {
   return (
     <div className="w-full md:w-[70vw] overflow-x-hidden bg-black/80 rounded-3xl text-lg h-[65vh] app-scrollbar overflow-y-auto py-2 px-4 mt-8 font-mono md:text-xl text-center">
       <p className="my-8">
-        Hello! My name is Abdelrahman, I&apos;m a Front-developer from Egypt. I
+        Hello! My name is Abdelrahman, I&apos;m a Front-end developer from Egypt. I
         started out my career in tech as a technical support specialist,
         assisting customers with technical queries among other things.
       </p>
