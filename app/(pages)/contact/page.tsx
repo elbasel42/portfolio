@@ -8,7 +8,14 @@ const pacifico = Pacifico({
   weight: "400",
 });
 
-const ContactPage = () => {
+interface ContactPageProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+const ContactPage = ({ searchParams }: ContactPageProps) => {
+  const { error } = searchParams;
+  console.log({ error });
+
   return (
     <SlideInFromBottom>
       <Globe />

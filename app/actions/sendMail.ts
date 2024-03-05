@@ -1,10 +1,32 @@
 "use server";
-
+import { emailHTML } from "@app/lib/emailHTML";
+import { redirect } from "next/navigation";
 const nodemailer = require("nodemailer");
+
+const validateFormData = (formData: FormData) => {
+  const name = formData.get("name")?.toString();
+  const email = formData.get("email")?.toString();
+  const subject = formData.get("subject")?.toString();
+  const body = formData.get("body")?.toString();
+
+  if (!name || name.length < 1) return "Invalid Name";
+  if (!email || email.length < 1) return "Invalid Email";
+  if (!subject || subject.length < 1) return "Invalid Subject";
+  if (!body || body.length < 1) return "Invalid Message";
+  return "";
+};
 
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendMail(formData: FormData) {
-  console.log(formData);
+  const validationError = validateFormData(formData);
+  if (validationError !== "")
+    redirect(`/contact/?error=${encodeURIComponent(validationError)}`);
+
+  const name = formData.get("name")?.toString();
+  const email = formData.get("email")?.toString();
+  const subject = formData.get("subject")?.toString();
+  const body = formData.get("body")?.toString();
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -12,15 +34,32 @@ export async function sendMail(formData: FormData) {
       pass: process.env.NODEMAILER_PASS,
     },
   });
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Mr.Jack" <jack@mail.com>',
-    to: "dandelionhonorable@gmail.com",
-    subject: "Hello ✔",
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+
+  console.log("==================================");
+  console.log({
+    name,
+    email,
+    subject,
+    body,
+  });
+  const senderInfo = await transporter.sendMail({
+    from: '"Abdelrahman Elbasel" <abdelrahman.elbasel42@gmail.com>',
+    to: email,
+    subject: "Thanks for reaching out!",
+    html: emailHTML,
   });
 
-  console.log("Message sent: %s", info.messageId);
+  const receiverInfo = await transporter.sendMail({
+    from: `"${name}" <${email}>`,
+    to: "abdelrahman.elbasel42@gmail.com",
+    subject: subject,
+    html: `
+    <div>name: ${name}</div>
+    <div>subject: ${subject}</div>
+    <div>body: ${body}</div>
+    `,
+  });
+
+  console.log("Previous message successful");
+  console.log("==================================");
 }
-// sendMail().catch(console.error);
