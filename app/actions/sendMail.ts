@@ -2,9 +2,8 @@
 
 import { redirect } from "next/navigation";
 import nodemailer from "nodemailer";
-import { emailHTML } from "@app/lib";
+import { emailHTML } from "@app/lib/emailHTML";
 import { validateEmail } from "@app/utils";
-import { type ContactFormValidationError } from "@app/types";
 import { validateFormData } from "./validateFormData";
 
 // async..await is not allowed in global scope, must use a wrapper
