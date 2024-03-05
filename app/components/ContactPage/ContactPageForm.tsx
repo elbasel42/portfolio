@@ -45,7 +45,7 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
     <form
       action={sendMail}
       onSubmit={onSubmit}
-      className="mx-auto md:w-[38vw] md:ml-auto mt-[20vh] md:mt-[10vh] space-y-4"
+      className="mx-auto md:w-[38vw] md:ml-auto mt-[15vh] md:mt-[10vh] space-y-4"
     >
       {INPUTS.map((n, index) => (
         <SlideInFromRight
