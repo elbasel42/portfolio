@@ -3,7 +3,7 @@ import { Social } from "@app/components/ContactPage";
 import { socials } from "@app/lib";
 export const SocialList = () => {
   return (
-    <div className="space-y-4 flex flex-col justify-center h-screen">
+    <div className="absolute flex items-center justify-center w-screen bottom-10 md:space-y-4 md:w-fit md:flex-col md:h-screen md:static">
       {socials.map((s, index) => (
         <Social
           Icon={s.icon}

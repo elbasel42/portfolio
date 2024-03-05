@@ -1,5 +1,5 @@
-import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
+import { Pacifico } from "next/font/google";
 
 const pacifico = Pacifico({
   subsets: ["latin"],

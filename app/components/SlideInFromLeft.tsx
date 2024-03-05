@@ -8,22 +8,24 @@ interface SlideInFromLeftProps {
   children: ReactNode;
   duration?: number;
   delay?: number;
+  className?: string;
 }
 
 export const SlideInFromLeft = ({
   children,
   duration = 1000,
   delay = 0,
+  className = "",
 }: SlideInFromLeftProps) => {
-  const [className, setClassName] = useState("");
+  const [transition, setTransition] = useState("");
   const { isIntersecting, ref } = useIntersectionObserver({});
 
   useEffect(() => {
-    if (!isIntersecting) return setClassName("");
+    if (!isIntersecting) return setTransition("");
     setTimeout(() => {
-      setClassName("translate-x-0");
+      setTransition("translate-x-0");
     }, delay);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
   return (
@@ -33,7 +35,11 @@ export const SlideInFromLeft = ({
           transitionDuration: `${duration}ms`,
           animationDuration: `${duration}ms`,
         }}
-        className={twMerge("transform w-fit -translate-x-[100vw]", className)}
+        className={twMerge(
+          "transform w-fit -translate-x-[100vw]",
+          className,
+          transition
+        )}
       >
         {children}
       </div>
