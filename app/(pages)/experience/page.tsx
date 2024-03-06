@@ -1,14 +1,14 @@
 "use client";
 
 import { Rings, SlideInFromBottom, SlideInFromLeft } from "@app/components";
-import { ScreenLine } from "@app/components/ExperiencePage";
+import { Experience, ScreenLine } from "@app/components/ExperiencePage";
 import { experiences } from "@app/lib";
 import { range } from "@app/utils";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
-// Must be an even number larger than `experience.length`
+//! Must be an even number larger than `experience.length`
 const MAX_YEAR_COUNT = 1000;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experiences.length;
 
@@ -32,10 +32,10 @@ const ExperiencePage = () => {
     const elemIndex = (pageNum / MAX_YEAR_COUNT) * experiences.length;
     if (elemIndex < 0) return;
     if (elemIndex >= experiences.length) return;
-    const children = document.querySelectorAll(".year");
+    const children = document.querySelectorAll(".experience");
     const elemToScrollTo = children[elemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
-    //! setTimeout to prevent state from updating before the function completed
+    //! setTimeout to prevent state from updating before the function s completed
     setTimeout(() => {
       setCurrentIndex(elemIndex);
     }, 1000);
@@ -68,28 +68,12 @@ const ExperiencePage = () => {
           const isEmpty = n % 200 !== 0 && n !== 0;
           if (isEmpty) return <ScreenLine key={n} />;
 
-          const exp = experiences[n / PAGES_PER_YEAR];
+          const { title, startYear, company } = experiences[n / PAGES_PER_YEAR];
 
           return (
-            <div
-              key={n}
-              className="year snap-always snap-center h-[100dvh] left-4 bg-white w-2 relative"
-            >
-              <span className="absolute w-6 h-6 transform scale-125 -translate-x-[8px] -translate-y-1/2 bg-red-500 rounded-full top-1/2" />
-              <div className="absolute px-4 py-2 transform translate-x-8 -translate-y-1/2 top-1/2 bg-black/40 rounded-3xl">
-                <SlideInFromLeft duration={1300}>
-                  <p className="space-x-2 md:text-xl">
-                    <span className="text-3xl text-purple-600">
-                      {exp.startYear}
-                    </span>
-                  </p>
-                  <h2 className="text-3xl w-[80vw] md:w-max md:text-5xl">
-                    {exp.title}
-                  </h2>
-                  <span className="text-blue-600">@{exp.company}</span>
-                </SlideInFromLeft>
-              </div>
-            </div>
+            <ScreenLine key={n}>
+              <Experience title={title} year={startYear} company={company} />
+            </ScreenLine>
           );
         })}
       </div>

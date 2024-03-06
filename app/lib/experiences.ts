@@ -1,9 +1,4 @@
-interface Experience {
-  title: string;
-  startYear: number;
-  endYear: number;
-  company: string;
-}
+import { Experience } from "@app/types";
 
 export const experiences: Experience[] = [
   {
