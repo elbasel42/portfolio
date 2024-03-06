@@ -11,9 +11,9 @@ export const Net = () => {
   const [bgHidden, setBgHidden] = useState(true);
 
   const initVanta = () => {
-    const three = window.THREE;
-    const vanta = window.VANTA;
-    if (!three || !vanta) setTimeout(initVanta, 1000);
+    if (!window.THREE || !window.VANTA) {
+      setTimeout(initVanta, 1000);
+    }
 
     const effect = VANTA.NET({
       el: "#netElem",
@@ -24,6 +24,7 @@ export const Net = () => {
       scaleMobile: 1.0,
       backgroundColor: 0x0,
       color: 0x682e2e,
+      THREE: window.THREE,
     });
     setBgHidden(false);
     return effect;

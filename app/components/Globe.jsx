@@ -11,9 +11,9 @@ export const Globe = () => {
   const [bgHidden, setBgHidden] = useState(true);
 
   const initVanta = () => {
-    const three = window.THREE;
-    const vanta = window.VANTA;
-    if (!three || !vanta) setTimeout(initVanta, 1000);
+    if (!window.THREE || !window.VANTA) {
+      setTimeout(initVanta, 1000);
+    }
 
     const effect = VANTA.GLOBE({
       el: "#globeElem",
@@ -27,6 +27,7 @@ export const Globe = () => {
       color: 0x472bb1,
       size: 1.4,
       backgroundColor: 0x0,
+      THREE: window.THREE,
     });
     setBgHidden(false);
     return effect;

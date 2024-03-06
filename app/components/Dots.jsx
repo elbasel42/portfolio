@@ -11,9 +11,9 @@ export const Dots = () => {
   const [bgHidden, setBgHidden] = useState(true);
 
   const initVanta = () => {
-    const three = window.THREE;
-    const vanta = window.VANTA;
-    if (!three || !vanta) setTimeout(initVanta, 1000);
+    if (!window.THREE || !window.VANTA) {
+      setTimeout(initVanta, 1000);
+    }
 
     const effect = VANTA.DOTS({
       el: "#dotsElem",
@@ -27,6 +27,7 @@ export const Dots = () => {
       color: 0x1c1cde,
       color2: 0xff0000,
       backgroundColor: 0x0,
+      THREE: window.THREE,
     });
     setBgHidden(false);
     return effect;
