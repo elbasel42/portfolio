@@ -2,6 +2,7 @@
 
 import { Rings, SlideInFromBottom, SlideInFromLeft } from "@app/components";
 import { range } from "@app/utils";
+import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -54,17 +55,21 @@ const buttonClassName =
 const iconClassName = "w-12 h-12 md:w-36 md:h-36";
 
 const ExperiencePage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const onForwardClick = () => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop ?? 0;
     const windowHeight = window.innerHeight;
     const currentPageNum = scrollTop / windowHeight;
-    const nextElemIndex =
-      ((currentPageNum + PAGES_PER_YEAR) / MAX_YEAR_COUNT) * experience.length;
+    const nextPageNum = currentPageNum + PAGES_PER_YEAR;
+    const nextElemIndex = (nextPageNum / MAX_YEAR_COUNT) * experience.length;
     if (nextElemIndex >= experience.length) return;
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[nextElemIndex];
-    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
+    elemToScrollTo.scrollIntoView();
+
+    setCurrentIndex(nextElemIndex);
   };
 
   const onBackClick = () => {
@@ -73,17 +78,12 @@ const ExperiencePage = () => {
     const windowHeight = window.innerHeight;
     const currentPageNum = scrollTop / windowHeight;
     if (currentPageNum <= 0) return;
-    const nextElemIndex =
-      ((currentPageNum - PAGES_PER_YEAR) / MAX_YEAR_COUNT) * experience.length;
+    const prevPageNum = currentPageNum - PAGES_PER_YEAR;
+    const prevElemIndex = (prevPageNum / MAX_YEAR_COUNT) * experience.length;
+
     const children = document.querySelectorAll(".year");
-    const elemToScrollTo = children[nextElemIndex];
-    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
-    // console.log({
-    //   currentPageNum,
-    //   nextElemIndex,
-    //   children,
-    //   elemToScrollTo,
-    // });
+    const elemToScrollTo = children[prevElemIndex];
+    elemToScrollTo.scrollIntoView();
   };
 
   return (
