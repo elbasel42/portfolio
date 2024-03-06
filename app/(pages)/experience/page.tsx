@@ -58,10 +58,23 @@ const ExperiencePage = () => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop ?? 0;
     const windowHeight = window.innerHeight;
-    // if (scrollTop === undefined) throw new Error("Invalid scrollTop ");
     const currentPageNum = scrollTop / windowHeight;
     const nextElemIndex =
       ((currentPageNum + PAGES_PER_YEAR) / MAX_YEAR_COUNT) * experience.length;
+    if (nextElemIndex >= experience.length) return;
+    const children = document.querySelectorAll(".year");
+    const elemToScrollTo = children[nextElemIndex];
+    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const onBackClick = () => {
+    const scrollElem = document.getElementById("scrollElem");
+    const scrollTop = scrollElem?.scrollTop ?? 0;
+    const windowHeight = window.innerHeight;
+    const currentPageNum = scrollTop / windowHeight;
+    if (currentPageNum <= 0) return;
+    const nextElemIndex =
+      ((currentPageNum - PAGES_PER_YEAR) / MAX_YEAR_COUNT) * experience.length;
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[nextElemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
@@ -76,7 +89,7 @@ const ExperiencePage = () => {
   return (
     <SlideInFromBottom>
       <div className="absolute flex gap-4 top-4 right-4">
-        <button className={buttonClassName}>
+        <button onClick={onBackClick} className={buttonClassName}>
           <IoIosArrowBack className={iconClassName} />
         </button>
         <button className={buttonClassName} onClick={onForwardClick}>
