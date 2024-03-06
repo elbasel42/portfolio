@@ -45,7 +45,7 @@ const experience: Experience[] = [
   },
 ];
 
-// Must be an even number
+// Must be an even number larger than `experience.length`
 const MAX_YEAR_COUNT = 1000;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experience.length;
 
@@ -54,34 +54,32 @@ const buttonClassName =
 const iconClassName = "w-12 h-12 md:w-36 md:h-36";
 
 const ExperiencePage = () => {
+  const onForwardClick = () => {
+    const scrollElem = document.getElementById("scrollElem");
+    const scrollTop = scrollElem?.scrollTop ?? 0;
+    const windowHeight = window.innerHeight;
+    // if (scrollTop === undefined) throw new Error("Invalid scrollTop ");
+    const currentPageNum = scrollTop / windowHeight;
+    const nextElemIndex =
+      ((currentPageNum + PAGES_PER_YEAR) / MAX_YEAR_COUNT) * experience.length;
+    const children = document.querySelectorAll(".year");
+    const elemToScrollTo = children[nextElemIndex];
+    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
+    // console.log({
+    //   currentPageNum,
+    //   nextElemIndex,
+    //   children,
+    //   elemToScrollTo,
+    // });
+  };
+
   return (
     <SlideInFromBottom>
       <div className="absolute flex gap-4 top-4 right-4">
         <button className={buttonClassName}>
           <IoIosArrowBack className={iconClassName} />
         </button>
-        <button
-          className={buttonClassName}
-          onClick={() => {
-            const scrollElem = document.getElementById("scrollElem");
-            const scrollTop = scrollElem?.scrollTop;
-            const windowHeight = window.innerHeight;
-            if (scrollTop === undefined) throw new Error("Invalid scrollTop ");
-            const currentPageNum = scrollTop / windowHeight;
-            const nextElemIndex =
-              ((currentPageNum + PAGES_PER_YEAR) / MAX_YEAR_COUNT) *
-              experience.length;
-            const children = document.querySelectorAll(".year");
-            const elemToScrollTo = children[nextElemIndex];
-            elemToScrollTo.scrollIntoView({ behavior: "smooth" });
-            console.log({
-              currentPageNum,
-              nextElemIndex,
-              children,
-              elemToScrollTo,
-            });
-          }}
-        >
+        <button className={buttonClassName} onClick={onForwardClick}>
           <IoIosArrowForward className={iconClassName} />
         </button>
       </div>
@@ -100,10 +98,10 @@ const ExperiencePage = () => {
                 endYear: 0,
                 company: "",
               }
-            : experience[(n / MAX_YEAR_COUNT) * experience.length];
+            : experience[n / PAGES_PER_YEAR];
 
-          if (!isEmpty) console.log(exp);
-          if (!exp) return;
+          // if (!isEmpty) console.log(exp);
+          // if (!exp) return;
           if (isEmpty)
             return (
               <div
