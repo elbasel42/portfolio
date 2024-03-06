@@ -68,8 +68,32 @@ const ExperiencePage = () => {
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[nextElemIndex];
     elemToScrollTo.scrollIntoView();
+    setTimeout(() => {
+      setCurrentIndex(nextElemIndex);
+    }, 1000);
+  };
 
-    setCurrentIndex(nextElemIndex);
+  const onButtonClick = (direction: "backwards" | "forwards") => {
+    const scrollElem = document.getElementById("scrollElem");
+    const scrollTop = scrollElem?.scrollTop ?? 0;
+    const windowHeight = window.innerHeight;
+    const currentPageNum = scrollTop / windowHeight;
+    const pageNum =
+      direction === "backwards"
+        ? currentPageNum - PAGES_PER_YEAR
+        : currentPageNum + PAGES_PER_YEAR;
+    const elemIndex = (pageNum / MAX_YEAR_COUNT) * experience.length;
+
+    if (elemIndex <= 0) return;
+    if (elemIndex >= experience.length) return;
+
+    const children = document.querySelectorAll(".year");
+    const elemToScrollTo = children[elemIndex];
+    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
+    //! setTimeout to prevent state from updating before the function completed
+    setTimeout(() => {
+      setCurrentIndex(elemIndex);
+    }, 1000);
   };
 
   const onBackClick = () => {
@@ -80,12 +104,14 @@ const ExperiencePage = () => {
     if (currentPageNum <= 0) return;
     const prevPageNum = currentPageNum - PAGES_PER_YEAR;
     const prevElemIndex = (prevPageNum / MAX_YEAR_COUNT) * experience.length;
-
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[prevElemIndex];
-    elemToScrollTo.scrollIntoView();
+    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
 
-    setCurrentIndex(prevElemIndex);
+    //! setTimeout to prevent state from updating before the function completed
+    setTimeout(() => {
+      setCurrentIndex(prevElemIndex);
+    }, 1000);
   };
 
   return (
@@ -101,7 +127,8 @@ const ExperiencePage = () => {
         <button
           disabled={currentIndex >= experience.length - 1}
           className={buttonClassName}
-          onClick={onForwardClick}
+          // onClick={onForwardClick}
+          onClick={() => onButtonClick("forwards")}
         >
           <IoIosArrowForward className={iconClassName} />
         </button>
