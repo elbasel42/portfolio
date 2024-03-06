@@ -11,6 +11,10 @@ export const Dots = () => {
   const [bgHidden, setBgHidden] = useState(true);
 
   const initVanta = () => {
+    const three = window.THREE;
+    const vanta = window.VANTA;
+    if (!three || !vanta) setTimeout(initVanta, 1000);
+
     const effect = VANTA.DOTS({
       el: "#dotsElem",
       mouseControls: true,
