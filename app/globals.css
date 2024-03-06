@@ -42,6 +42,7 @@ body {
     opacity: 1;
   }
 }
+
 @keyframes shake {
   0% {
     transform: translateX(0);

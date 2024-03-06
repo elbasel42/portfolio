@@ -5,13 +5,17 @@ import { twMerge } from "tailwind-merge";
 
 interface SlideInFromBottomProps {
   children: ReactNode;
+  className?: string;
 }
 
-export const SlideInFromBottom = ({ children }: SlideInFromBottomProps) => {
-  const [className, setClassName] = useState("");
+export const SlideInFromBottom = ({
+  children,
+  className = "",
+}: SlideInFromBottomProps) => {
+  const [transition, setTransition] = useState("");
 
   useEffect(() => {
-    setClassName("translate-y-0");
+    setTransition("translate-y-0");
   }, []);
 
   return (
@@ -19,7 +23,8 @@ export const SlideInFromBottom = ({ children }: SlideInFromBottomProps) => {
       <div
         className={twMerge(
           "transition-transform h-[100dvh] duration-3000 translate-y-1000",
-          className
+          className,
+          transition
         )}
       >
         {children}

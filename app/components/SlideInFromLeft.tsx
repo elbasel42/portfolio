@@ -36,7 +36,7 @@ export const SlideInFromLeft = ({
           animationDuration: `${duration}ms`,
         }}
         className={twMerge(
-          "transform w-fit -translate-x-[100vw]",
+          "transform w-fit out-expo -translate-x-[100vw]",
           className,
           transition
         )}
