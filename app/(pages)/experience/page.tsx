@@ -51,7 +51,7 @@ const MAX_YEAR_COUNT = 1000;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experience.length;
 
 const buttonClassName =
-  "flex items-center active:scale-125 hover:scale-105 justify-center hover:ring-2 hover:ring-blue-600 transition-all duration-300 px-2 py-2 border rounded-full border-white/20 bg-black/80";
+  "flex items-center disabled:bg-gray-800 enabled:active:scale-125 enabled:cursor-pointer disabled:cursor-not-allowed enabled:hover:scale-105 justify-center enabled:hover:ring-2 enabled:hover:ring-blue-600 transition-all duration-300 px-2 py-2 enabled:border rounded-full border-white/20 enabled:bg-black/80";
 const iconClassName = "w-12 h-12 md:w-36 md:h-36";
 
 const ExperiencePage = () => {
@@ -84,15 +84,25 @@ const ExperiencePage = () => {
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[prevElemIndex];
     elemToScrollTo.scrollIntoView();
+
+    setCurrentIndex(prevElemIndex);
   };
 
   return (
     <SlideInFromBottom>
       <div className="absolute flex gap-4 top-4 right-4">
-        <button onClick={onBackClick} className={buttonClassName}>
+        <button
+          disabled={currentIndex <= 0}
+          onClick={onBackClick}
+          className={buttonClassName}
+        >
           <IoIosArrowBack className={iconClassName} />
         </button>
-        <button className={buttonClassName} onClick={onForwardClick}>
+        <button
+          disabled={currentIndex >= experience.length - 1}
+          className={buttonClassName}
+          onClick={onForwardClick}
+        >
           <IoIosArrowForward className={iconClassName} />
         </button>
       </div>
@@ -102,7 +112,6 @@ const ExperiencePage = () => {
         className="h-[100dvh] scroll-smooth snap-y snap-mandatory overflow-x-hidden overflow-y-auto app-scrollbar"
       >
         {range(0, MAX_YEAR_COUNT).map((n) => {
-          // console.log({ n, r: n % 200 });
           const isEmpty = n % 200 !== 0 && n !== 0;
           const exp = isEmpty
             ? {
@@ -113,8 +122,6 @@ const ExperiencePage = () => {
               }
             : experience[n / PAGES_PER_YEAR];
 
-          // if (!isEmpty) console.log(exp);
-          // if (!exp) return;
           if (isEmpty)
             return (
               <div
