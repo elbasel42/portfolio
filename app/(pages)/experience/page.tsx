@@ -62,11 +62,12 @@ const ExperiencePage = () => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop ?? 0;
     const windowHeight = window.innerHeight;
-    const currentPageNum = scrollTop / windowHeight;
+    const remainder = (scrollTop / windowHeight) % 200;
+    const closestPageNum = scrollTop / windowHeight - remainder;
     const pageNum =
       direction === "backwards"
-        ? currentPageNum - PAGES_PER_YEAR
-        : currentPageNum + PAGES_PER_YEAR;
+        ? closestPageNum - PAGES_PER_YEAR
+        : closestPageNum + PAGES_PER_YEAR;
     const elemIndex = (pageNum / MAX_YEAR_COUNT) * experience.length;
     if (elemIndex < 0) return;
     if (elemIndex >= experience.length) return;
