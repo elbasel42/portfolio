@@ -1,6 +1,7 @@
 "use client";
 
 import { Rings, SlideInFromBottom, SlideInFromLeft } from "@app/components";
+import { ScreenLine } from "@app/components/ExperiencePage";
 import { range } from "@app/utils";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
@@ -103,24 +104,10 @@ const ExperiencePage = () => {
       >
         {range(0, MAX_YEAR_COUNT).map((n) => {
           const isEmpty = n % 200 !== 0 && n !== 0;
-          const exp = isEmpty
-            ? {
-                title: "",
-                startYear: 0,
-                endYear: 0,
-                company: "",
-              }
-            : experience[n / PAGES_PER_YEAR];
+          if (isEmpty) return <ScreenLine key={n} />;
 
-          if (isEmpty)
-            return (
-              <div
-                key={n}
-                className="snap-always snap-center h-[100dvh] left-4 bg-white w-2 relative"
-              >
-                <span className="absolute w-6 h-6 transform scale-125 -translate-x-[8px] -translate-y-1/2 bg-red-500 rounded-full top-1/2" />
-              </div>
-            );
+          const exp = experience[n / PAGES_PER_YEAR];
+
           return (
             <div
               key={n}
