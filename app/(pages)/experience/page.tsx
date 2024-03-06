@@ -1,5 +1,11 @@
+import { Rings, SlideInFromBottom } from "@app/components";
+
 const ExperiencePage = () => {
-  return <main>Experience Page</main>;
+  return (
+    <SlideInFromBottom>
+      <Rings />
+    </SlideInFromBottom>
+  );
 };
 
 export default ExperiencePage;

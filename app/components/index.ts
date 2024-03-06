@@ -10,8 +10,10 @@ import { SlideInFromRight } from "./SlideInFromRight";
 import { SlideInFromLeft } from "./SlideInFromLeft";
 import { Globe } from "./Globe";
 import { HomeButton } from "./HomeButton";
+import { Rings } from "./Rings";
 
 export {
+  Rings,
   HomeButton,
   Button,
   HackedText,
