@@ -22,7 +22,7 @@ const AboutPage = () => {
         <FaDownload className="w-6 h-6 active:scale-125 hover:bounce" />
       </Link>
       <Dots />
-      <main className="h-[100svh] overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
+      <main className="h-[100dvh] overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
         <AboutPageSection className="items-center justify-center">
           <ABoutPageMainTitle />
           <AboutPageDownArrow id="bio" />

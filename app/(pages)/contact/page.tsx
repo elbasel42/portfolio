@@ -20,9 +20,9 @@ const ContactPage = ({ searchParams }: ContactPageProps) => {
     <SlideInFromBottom>
       <HomeButton />
       <Globe />
-      <main className="flex h-[100svh]">
+      <main className="flex h-[100dvh]">
         <SocialList />
-        <div className="absolute top-0 mt-[10svh] md:static text-center w-screen md:w-[40vw] md:h-[80svh] md:mx-auto md:px-8 md:py-4">
+        <div className="absolute top-0 mt-[5dvh] md:static text-center w-screen md:w-[40vw] md:mt-[10dvh] md:h-[80dvh] md:mx-auto md:px-8 md:py-4">
           <SlideIn>
             <h1
               className={twMerge(

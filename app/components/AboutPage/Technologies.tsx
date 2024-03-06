@@ -26,7 +26,7 @@ export const Technologies = () => {
               Logo={tech.icon}
               title={tech.title}
               slideFrom="right"
-              animDuration={(index + 3) * 1000}
+              animDuration={(index + 2) * 1000}
               className={tech.className}
               key={tech.title}
             />

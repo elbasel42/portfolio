@@ -1,5 +1,5 @@
 const ExperiencePage = () => {
-  return <main>Projects Page</main>;
+  return <main>Experience Page</main>;
 };
 
 export default ExperiencePage;
