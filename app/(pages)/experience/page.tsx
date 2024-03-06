@@ -57,22 +57,6 @@ const iconClassName = "w-12 h-12 md:w-36 md:h-36";
 const ExperiencePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const onForwardClick = () => {
-    const scrollElem = document.getElementById("scrollElem");
-    const scrollTop = scrollElem?.scrollTop ?? 0;
-    const windowHeight = window.innerHeight;
-    const currentPageNum = scrollTop / windowHeight;
-    const nextPageNum = currentPageNum + PAGES_PER_YEAR;
-    const nextElemIndex = (nextPageNum / MAX_YEAR_COUNT) * experience.length;
-    if (nextElemIndex >= experience.length) return;
-    const children = document.querySelectorAll(".year");
-    const elemToScrollTo = children[nextElemIndex];
-    elemToScrollTo.scrollIntoView();
-    setTimeout(() => {
-      setCurrentIndex(nextElemIndex);
-    }, 1000);
-  };
-
   const onButtonClick = (direction: "backwards" | "forwards") => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop ?? 0;
@@ -83,10 +67,8 @@ const ExperiencePage = () => {
         ? currentPageNum - PAGES_PER_YEAR
         : currentPageNum + PAGES_PER_YEAR;
     const elemIndex = (pageNum / MAX_YEAR_COUNT) * experience.length;
-
-    if (elemIndex <= 0) return;
+    if (elemIndex < 0) return;
     if (elemIndex >= experience.length) return;
-
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[elemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
@@ -96,30 +78,12 @@ const ExperiencePage = () => {
     }, 1000);
   };
 
-  const onBackClick = () => {
-    const scrollElem = document.getElementById("scrollElem");
-    const scrollTop = scrollElem?.scrollTop ?? 0;
-    const windowHeight = window.innerHeight;
-    const currentPageNum = scrollTop / windowHeight;
-    if (currentPageNum <= 0) return;
-    const prevPageNum = currentPageNum - PAGES_PER_YEAR;
-    const prevElemIndex = (prevPageNum / MAX_YEAR_COUNT) * experience.length;
-    const children = document.querySelectorAll(".year");
-    const elemToScrollTo = children[prevElemIndex];
-    elemToScrollTo.scrollIntoView({ behavior: "smooth" });
-
-    //! setTimeout to prevent state from updating before the function completed
-    setTimeout(() => {
-      setCurrentIndex(prevElemIndex);
-    }, 1000);
-  };
-
   return (
     <SlideInFromBottom>
       <div className="absolute flex gap-4 top-4 right-4">
         <button
           disabled={currentIndex <= 0}
-          onClick={onBackClick}
+          onClick={() => onButtonClick("backwards")}
           className={buttonClassName}
         >
           <IoIosArrowBack className={iconClassName} />
@@ -127,7 +91,6 @@ const ExperiencePage = () => {
         <button
           disabled={currentIndex >= experience.length - 1}
           className={buttonClassName}
-          // onClick={onForwardClick}
           onClick={() => onButtonClick("forwards")}
         >
           <IoIosArrowForward className={iconClassName} />
