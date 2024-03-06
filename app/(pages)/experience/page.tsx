@@ -2,54 +2,15 @@
 
 import { Rings, SlideInFromBottom, SlideInFromLeft } from "@app/components";
 import { ScreenLine } from "@app/components/ExperiencePage";
+import { experiences } from "@app/lib";
 import { range } from "@app/utils";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
-interface Experience {
-  title: string;
-  startYear: number;
-  endYear: number;
-  company: string;
-}
-
-const experience: Experience[] = [
-  {
-    title: "Technical Support Engineer",
-    startYear: 2016,
-    endYear: 2017,
-    company: "Teleperformance",
-  },
-  {
-    title: "Technical Support Engineer",
-    startYear: 2017,
-    endYear: 2019,
-    company: "Concentrix",
-  },
-  {
-    title: "Frontend Developer",
-    startYear: 2019,
-    endYear: 2021,
-    company: "Freelance",
-  },
-  {
-    title: "Software Developer",
-    startYear: 2021,
-    endYear: 2023,
-    company: "Scandiweb",
-  },
-  {
-    title: "Frontend Developer",
-    startYear: 2023,
-    endYear: 2024,
-    company: "Freelance",
-  },
-];
-
 // Must be an even number larger than `experience.length`
 const MAX_YEAR_COUNT = 1000;
-const PAGES_PER_YEAR = MAX_YEAR_COUNT / experience.length;
+const PAGES_PER_YEAR = MAX_YEAR_COUNT / experiences.length;
 
 const buttonClassName =
   "flex items-center disabled:bg-gray-800 enabled:active:scale-125 enabled:cursor-pointer disabled:cursor-not-allowed enabled:hover:scale-105 justify-center enabled:hover:ring-2 enabled:hover:ring-blue-600 transition-all duration-300 px-2 py-2 enabled:border rounded-full border-white/20 enabled:bg-black/80";
@@ -68,9 +29,9 @@ const ExperiencePage = () => {
       direction === "backwards"
         ? closestPageNum - PAGES_PER_YEAR
         : closestPageNum + PAGES_PER_YEAR;
-    const elemIndex = (pageNum / MAX_YEAR_COUNT) * experience.length;
+    const elemIndex = (pageNum / MAX_YEAR_COUNT) * experiences.length;
     if (elemIndex < 0) return;
-    if (elemIndex >= experience.length) return;
+    if (elemIndex >= experiences.length) return;
     const children = document.querySelectorAll(".year");
     const elemToScrollTo = children[elemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
@@ -91,7 +52,7 @@ const ExperiencePage = () => {
           <IoIosArrowBack className={iconClassName} />
         </button>
         <button
-          disabled={currentIndex >= experience.length - 1}
+          disabled={currentIndex >= experiences.length - 1}
           className={buttonClassName}
           onClick={() => onButtonClick("forwards")}
         >
@@ -107,7 +68,7 @@ const ExperiencePage = () => {
           const isEmpty = n % 200 !== 0 && n !== 0;
           if (isEmpty) return <ScreenLine key={n} />;
 
-          const exp = experience[n / PAGES_PER_YEAR];
+          const exp = experiences[n / PAGES_PER_YEAR];
 
           return (
             <div
