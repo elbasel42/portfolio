@@ -15,11 +15,11 @@ const AboutPage = () => {
     <SlideInFromBottom>
       <HomeButton />
       <Link
-        className="fixed z-20 flex flex-col gap-2 px-2 py-2 border rounded-lg hover:scale-125 top-4 border-white/50 right-4"
+        className="fixed z-20 flex flex-col gap-2 px-2 py-2 border rounded-lg hover:scale-125 bottom-4 border-white/50 left-4"
         href="/Abdelrahman-Elbasel-Resume.pdf"
         download="Abdelrahman-Elbasel-Resume.pdf"
       >
-        <FaDownload className="w-8 h-8 active:scale-125 hover:bounce" />
+        <FaDownload className="w-6 h-6 active:scale-125 hover:bounce" />
       </Link>
       <Dots />
       <main className="h-[100svh] overflow-y-auto snap-y scroll-smooth snap-mandatory app-scrollbar">
