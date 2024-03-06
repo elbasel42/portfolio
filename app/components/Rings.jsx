@@ -37,26 +37,17 @@ export const Rings = () => {
 
     const vantaEffect = initVanta();
 
-    const changeColor = () => {
-      const randomColor = getRandomColor();
-      vantaEffect.setOptions({
-        color: randomColor,
-      });
-    };
-
     const resizeVanta = () => {
       setTimeout(() => {
         vantaEffect.resize();
       }, 1000);
     };
 
-    window.addEventListener("click", changeColor);
     window.addEventListener("resize", resizeVanta);
 
     return () => {
       if (!vantaEffect) return;
       vantaEffect.destroy();
-      window.removeEventListener("click", changeColor);
       window.removeEventListener("resize", resizeVanta);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

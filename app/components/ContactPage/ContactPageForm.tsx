@@ -25,7 +25,6 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
     const formElem = e.target as HTMLFormElement;
     const formData = new FormData(formElem);
     const validationError = await validateFormData(formData);
-    console.log({ validationError });
     if (validationError === null) {
       setFormHidden(true);
     }
