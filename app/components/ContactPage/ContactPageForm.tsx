@@ -34,7 +34,7 @@ export const ContactPageForm = ({ error }: ContactPageFormProps) => {
   if (formHidden)
     return (
       <SlideIn>
-        <div className="fade-in mx-auto flex justify-center items-center md:mr-[8vw] md:w-[30vw] flex-col gap-4 md:ml-auto mt-[20svh] md:mt-[10svh] text-xl md:text-3xl text-white bg-black/40 rounded-3xl h-fit px-4 py-2 font-mono text-center">
+        <div className="fade-in mx-auto flex justify-center items-center md:mr-[8vw] md:w-[30vw] flex-col gap-4 md:ml-auto mt-[20svh] md:mt-[10svh] text-xl md:text-3xl text-white bg-black/80 rounded-3xl h-fit px-4 py-2 font-mono text-center">
           <p>Your message has been sent! you should hear from me soon!</p>
           <IoIosCheckmarkCircle className="w-8 h-8 md:w-20 md:h-20 text-green-600" />
         </div>

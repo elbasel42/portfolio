@@ -9,10 +9,10 @@ import { Dots } from "./Dots";
 import { SlideInFromRight } from "./SlideInFromRight";
 import { SlideInFromLeft } from "./SlideInFromLeft";
 import { Globe } from "./Globe";
-import { BackLink } from "./BackLink";
+import { HomeButton } from "./HomeButton";
 
 export {
-  BackLink,
+  HomeButton,
   Button,
   HackedText,
   HomeLink,

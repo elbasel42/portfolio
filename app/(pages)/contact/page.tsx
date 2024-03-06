@@ -1,6 +1,6 @@
 import { Pacifico } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import { BackLink, Globe, SlideIn, SlideInFromBottom } from "@app/components";
+import { Globe, HomeButton, SlideIn, SlideInFromBottom } from "@app/components";
 import { ContactPageForm, SocialList } from "@app/components/ContactPage";
 import { type ContactFormValidationError } from "@app/types";
 
@@ -18,7 +18,7 @@ const ContactPage = ({ searchParams }: ContactPageProps) => {
 
   return (
     <SlideInFromBottom>
-      <BackLink />
+      <HomeButton />
       <Globe />
       <main className="flex h-[100svh]">
         <SocialList />

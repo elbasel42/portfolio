@@ -21,8 +21,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        {/* <Analytics /> */}
+        {/* <SpeedInsights /> */}
       </body>
     </html>
   );
