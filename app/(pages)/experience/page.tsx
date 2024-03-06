@@ -1,20 +1,19 @@
 "use client";
 
-import { Rings, SlideInFromBottom, SlideInFromLeft } from "@app/components";
-import { Experience, ScreenLine } from "@app/components/ExperiencePage";
+import { useState } from "react";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { experiences } from "@app/lib";
 import { range } from "@app/utils";
-import { useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { Rings, SlideInFromBottom } from "@app/components";
+import { Experience, ScreenLine } from "@app/components/ExperiencePage";
 
 //! Must be an even number larger than `experience.length`
 const MAX_YEAR_COUNT = 1000;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experiences.length;
 
-const buttonClassName =
+const BUTTON_CLASS =
   "flex items-center disabled:bg-gray-800 enabled:active:scale-125 enabled:cursor-pointer disabled:cursor-not-allowed enabled:hover:scale-105 justify-center enabled:hover:ring-2 enabled:hover:ring-blue-600 transition-all duration-300 px-2 py-2 enabled:border rounded-full border-white/20 enabled:bg-black/80";
-const iconClassName = "w-12 h-12 md:w-36 md:h-36";
+const ICON_CLASS = "w-12 h-12 md:w-36 md:h-36";
 
 const ExperiencePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +22,7 @@ const ExperiencePage = () => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop ?? 0;
     const windowHeight = window.innerHeight;
-    const remainder = (scrollTop / windowHeight) % 200;
+    const remainder = (scrollTop / windowHeight) % PAGES_PER_YEAR;
     const closestPageNum = scrollTop / windowHeight - remainder;
     const pageNum =
       direction === "backwards"
@@ -47,16 +46,16 @@ const ExperiencePage = () => {
         <button
           disabled={currentIndex <= 0}
           onClick={() => onButtonClick("backwards")}
-          className={buttonClassName}
+          className={BUTTON_CLASS}
         >
-          <IoIosArrowBack className={iconClassName} />
+          <IoIosArrowBack className={ICON_CLASS} />
         </button>
         <button
           disabled={currentIndex >= experiences.length - 1}
-          className={buttonClassName}
+          className={BUTTON_CLASS}
           onClick={() => onButtonClick("forwards")}
         >
-          <IoIosArrowForward className={iconClassName} />
+          <IoIosArrowForward className={ICON_CLASS} />
         </button>
       </div>
       <Rings />
