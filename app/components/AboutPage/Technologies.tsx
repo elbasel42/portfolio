@@ -5,7 +5,7 @@ export const Technologies = () => {
   const separator = technologies.length / 2;
 
   return (
-    <div className="flex mt-36 md:mt-8">
+    <div className="flex mt-20 px-1 md:mt-8">
       <div className="space-y-4">
         {technologies.slice(0, separator).map((tech, index) => (
           <TechItem

@@ -26,7 +26,7 @@ const ContactPage = ({ searchParams }: ContactPageProps) => {
           <SlideIn>
             <h1
               className={twMerge(
-                "text-2xl md:text-6xl lg:text-8xl text-purple-700",
+                "text-2xl md:text-6xl pb-2 lg:text-8xl text-purple-700",
                 pacifico.className
               )}
             >
