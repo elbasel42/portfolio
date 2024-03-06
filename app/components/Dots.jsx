@@ -43,6 +43,7 @@ export const Dots = () => {
       if (!vantaEffect) return;
       vantaEffect.destroy();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threeReady, vantaReady]);
 
   return (
