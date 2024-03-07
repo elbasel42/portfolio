@@ -5,7 +5,7 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { experiences } from "@app/lib";
 import { range } from "@app/utils";
 import { HomeButton, Rings, SlideInFromBottom } from "@app/components";
-import { Experience, ScreenLine } from "@app/components/ExperiencePage";
+import { Experience, Quote, ScreenLine } from "@app/components/ExperiencePage";
 import debounce from "lodash.debounce";
 
 //! Must be an even number larger than `experience.length`
@@ -45,6 +45,8 @@ const ExperiencePage = () => {
     setScrollTop(scrollTop ?? 0);
   }, 200);
 
+  if (typeof window == "undefined") return null;
+
   return (
     <SlideInFromBottom>
       <HomeButton />
@@ -59,7 +61,7 @@ const ExperiencePage = () => {
         <button
           disabled={
             scrollElemTop >=
-            (TOTAL_PAGE_COUNT - PAGES_PER_ITEM) * window.innerHeight
+              (TOTAL_PAGE_COUNT - PAGES_PER_ITEM) * window?.innerHeight ?? 0
           }
           className={BUTTON_CLASS}
           onClick={() => onButtonClick("forwards")}
@@ -75,7 +77,13 @@ const ExperiencePage = () => {
       >
         {range(0, TOTAL_PAGE_COUNT - PAGES_PER_ITEM + 1).map((n) => {
           const isEmpty = n % PAGES_PER_ITEM !== 0 && n !== 0;
-          if (isEmpty) return <ScreenLine key={n} />;
+
+          if (isEmpty)
+            return (
+              <ScreenLine key={n}>
+                <Quote />
+              </ScreenLine>
+            );
 
           const { title, startYear, company } = experiences[n / PAGES_PER_ITEM];
 
