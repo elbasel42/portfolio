@@ -50,7 +50,7 @@ const ExperiencePage = () => {
   return (
     <SlideInFromBottom>
       <HomeButton />
-      <div className="absolute md:mr-[20vw] mt-[20dvh] md:mt-[30dvh] flex gap-4 top-4 right-4">
+      <div className="absolute bounce md:mr-[20vw] mt-[20dvh] md:mt-[30dvh] flex gap-4 top-4 right-4">
         <button
           disabled={scrollElemTop === 0}
           onClick={() => onButtonClick("backwards")}
