@@ -60,6 +60,7 @@ export const Globe = () => {
       window.removeEventListener("click", changeColor);
       window.removeEventListener("resize", resizeVanta);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threeReady, vantaReady]);
 
   return (
