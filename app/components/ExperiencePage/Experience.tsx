@@ -14,7 +14,7 @@ export const Experience = ({ year, company, title }: ExperienceProps) => {
           <span className="text-3xl text-purple-600">{year}</span>
         </p>
         <h2 className="text-3xl w-[80vw] md:w-max md:text-5xl">{title}</h2>
-        <span className="text-blue-600">@{company}</span>
+        <span className="italic font-mono">@{company}</span>
       </SlideInFromLeft>
     </div>
   );
