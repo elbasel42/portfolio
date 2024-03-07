@@ -79,11 +79,7 @@ const ExperiencePage = () => {
           const isEmpty = n % PAGES_PER_ITEM !== 0 && n !== 0;
 
           if (isEmpty)
-            return (
-              <ScreenLine key={n}>
-                <Quote />
-              </ScreenLine>
-            );
+            return <ScreenLine key={n}>{n % 2 === 0 && <Quote />}</ScreenLine>;
 
           const { title, startYear, company } = experiences[n / PAGES_PER_ITEM];
 
