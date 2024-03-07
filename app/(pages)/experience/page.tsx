@@ -4,11 +4,11 @@ import { useState } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { experiences } from "@app/lib";
 import { range } from "@app/utils";
-import { Rings, SlideInFromBottom } from "@app/components";
+import { HomeButton, Rings, SlideInFromBottom } from "@app/components";
 import { Experience, ScreenLine } from "@app/components/ExperiencePage";
 
 //! Must be an even number larger than `experience.length`
-const MAX_YEAR_COUNT = 400;
+const MAX_YEAR_COUNT = 40;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experiences.length;
 
 const BUTTON_CLASS =
@@ -33,7 +33,14 @@ const ExperiencePage = () => {
     if (elemIndex >= experiences.length) return;
     const children = document.querySelectorAll(".experience");
 
-    console.log({ scrollElem, remainder, closestPageNum , pageNum, elemIndex, children});
+    console.log({
+      scrollElem,
+      remainder,
+      closestPageNum,
+      pageNum,
+      elemIndex,
+      children,
+    });
     const elemToScrollTo = children[elemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
     //! setTimeout to prevent state from updating before the function s completed
@@ -44,6 +51,7 @@ const ExperiencePage = () => {
 
   return (
     <SlideInFromBottom>
+      <HomeButton />
       <div className="absolute flex gap-4 top-4 right-4">
         <button
           disabled={currentIndex <= 0}
@@ -65,7 +73,7 @@ const ExperiencePage = () => {
         id="scrollElem"
         className="h-[100dvh] scroll-smooth snap-y snap-mandatory overflow-x-hidden overflow-y-auto app-scrollbar"
       >
-        {range(0, MAX_YEAR_COUNT).map((n) => {
+        {range(0, MAX_YEAR_COUNT - PAGES_PER_YEAR + 1).map((n) => {
           const isEmpty = n % PAGES_PER_YEAR !== 0 && n !== 0;
           if (isEmpty) return <ScreenLine key={n} />;
 
