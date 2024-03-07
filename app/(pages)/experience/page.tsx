@@ -6,6 +6,7 @@ import { experiences } from "@app/lib";
 import { range } from "@app/utils";
 import { HomeButton, Rings, SlideInFromBottom } from "@app/components";
 import { Experience, ScreenLine } from "@app/components/ExperiencePage";
+import debounce from "lodash.debounce";
 
 //! Must be an even number larger than `experience.length`
 const TOTAL_PAGE_COUNT = 100;
@@ -23,30 +24,26 @@ const ExperiencePage = () => {
     const scrollTop = scrollElem?.scrollTop ?? 0;
     const windowHeight = window.innerHeight;
     const currentPageNum = scrollTop / windowHeight;
-
     const remainder = currentPageNum % PAGES_PER_ITEM;
     const closestPageNum = currentPageNum - remainder;
-
     const nextPageNum = closestPageNum + PAGES_PER_ITEM;
     let prevPageNum = closestPageNum - PAGES_PER_ITEM;
     prevPageNum = prevPageNum < 0 ? 0 : prevPageNum;
-
     const forwardsScrollBy =
       windowHeight * nextPageNum - currentPageNum * windowHeight;
     const backwardsScrollBy =
       windowHeight * prevPageNum - currentPageNum * windowHeight;
-
     if (direction === "forwards")
       scrollElem?.scrollBy({ top: forwardsScrollBy, behavior: "smooth" });
     if (direction === "backwards")
       scrollElem?.scrollBy({ top: backwardsScrollBy, behavior: "smooth" });
   };
 
-  const handleScroll = () => {
+  const handleScroll = debounce(() => {
     const scrollElem = document.getElementById("scrollElem");
     const scrollTop = scrollElem?.scrollTop;
     setScrollTop(scrollTop ?? 0);
-  };
+  }, 200);
 
   return (
     <SlideInFromBottom>
@@ -77,7 +74,6 @@ const ExperiencePage = () => {
         className="h-[100dvh] scroll-smooth snap-y snap-mandatory overflow-x-hidden overflow-y-auto app-scrollbar"
       >
         {range(0, TOTAL_PAGE_COUNT - PAGES_PER_ITEM + 1).map((n) => {
-          // {range(0, TOTAL_PAGE_COUNT).map((n) => {
           const isEmpty = n % PAGES_PER_ITEM !== 0 && n !== 0;
           if (isEmpty) return <ScreenLine key={n} />;
 
