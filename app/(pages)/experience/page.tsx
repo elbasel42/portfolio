@@ -16,7 +16,7 @@ const BUTTON_CLASS =
 const ICON_CLASS = "w-12 h-12 md:w-36 md:h-36";
 
 const ExperiencePage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [scrollElemTop, setScrollTop] = useState(0);
 
   const onButtonClick = (direction: "backwards" | "forwards") => {
     const scrollElem = document.getElementById("scrollElem");
@@ -24,49 +24,46 @@ const ExperiencePage = () => {
     const windowHeight = window.innerHeight;
     const currentPageNum = scrollTop / windowHeight;
 
-    //! Get closest page number
     const remainder = currentPageNum % PAGES_PER_ITEM;
     const closestPageNum = currentPageNum - remainder;
 
     const nextPageNum = closestPageNum + PAGES_PER_ITEM;
     let prevPageNum = closestPageNum - PAGES_PER_ITEM;
-    if (prevPageNum < 0) prevPageNum = 0;
+    prevPageNum = prevPageNum < 0 ? 0 : prevPageNum;
 
     const forwardsScrollBy =
       windowHeight * nextPageNum - currentPageNum * windowHeight;
-
     const backwardsScrollBy =
       windowHeight * prevPageNum - currentPageNum * windowHeight;
 
-    if (direction === "forwards") scrollElem?.scrollBy(0, forwardsScrollBy);
-    if (direction === "backwards") scrollElem?.scrollBy(0, backwardsScrollBy);
+    if (direction === "forwards")
+      scrollElem?.scrollBy({ top: forwardsScrollBy, behavior: "smooth" });
+    if (direction === "backwards")
+      scrollElem?.scrollBy({ top: backwardsScrollBy, behavior: "smooth" });
+  };
 
-    console.log({
-      forwardsScrollBy,
-      backwardsScrollBy,
-      scrollTop,
-      windowHeight,
-      currentPageNum,
-      remainder,
-      closestPageNum,
-      nextPageNum,
-      prevPageNum,
-    });
+  const handleScroll = () => {
+    const scrollElem = document.getElementById("scrollElem");
+    const scrollTop = scrollElem?.scrollTop;
+    setScrollTop(scrollTop ?? 0);
   };
 
   return (
     <SlideInFromBottom>
       <HomeButton />
-      <div className="absolute flex gap-4 top-4 right-4">
+      <div className="absolute mt-[20vh] flex gap-4 top-4 right-4">
         <button
-          // disabled={currentIndex <= 0}
+          disabled={scrollElemTop === 0}
           onClick={() => onButtonClick("backwards")}
           className={BUTTON_CLASS}
         >
           <IoIosArrowBack className={ICON_CLASS} />
         </button>
         <button
-          // disabled={currentIndex >= experiences.length - 1}
+          disabled={
+            scrollElemTop >=
+            (TOTAL_PAGE_COUNT - PAGES_PER_ITEM) * window.innerHeight
+          }
           className={BUTTON_CLASS}
           onClick={() => onButtonClick("forwards")}
         >
@@ -75,6 +72,7 @@ const ExperiencePage = () => {
       </div>
       <Rings />
       <main
+        onScroll={handleScroll}
         id="scrollElem"
         className="h-[100dvh] scroll-smooth snap-y snap-mandatory overflow-x-hidden overflow-y-auto app-scrollbar"
       >
