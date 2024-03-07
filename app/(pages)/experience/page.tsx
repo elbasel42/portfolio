@@ -8,7 +8,7 @@ import { Rings, SlideInFromBottom } from "@app/components";
 import { Experience, ScreenLine } from "@app/components/ExperiencePage";
 
 //! Must be an even number larger than `experience.length`
-const MAX_YEAR_COUNT = 1000;
+const MAX_YEAR_COUNT = 400;
 const PAGES_PER_YEAR = MAX_YEAR_COUNT / experiences.length;
 
 const BUTTON_CLASS =
@@ -32,6 +32,8 @@ const ExperiencePage = () => {
     if (elemIndex < 0) return;
     if (elemIndex >= experiences.length) return;
     const children = document.querySelectorAll(".experience");
+
+    console.log({ scrollElem, remainder, closestPageNum , pageNum, elemIndex, children});
     const elemToScrollTo = children[elemIndex];
     elemToScrollTo.scrollIntoView({ behavior: "smooth" });
     //! setTimeout to prevent state from updating before the function s completed
@@ -64,7 +66,7 @@ const ExperiencePage = () => {
         className="h-[100dvh] scroll-smooth snap-y snap-mandatory overflow-x-hidden overflow-y-auto app-scrollbar"
       >
         {range(0, MAX_YEAR_COUNT).map((n) => {
-          const isEmpty = n % 200 !== 0 && n !== 0;
+          const isEmpty = n % PAGES_PER_YEAR !== 0 && n !== 0;
           if (isEmpty) return <ScreenLine key={n} />;
 
           const { title, startYear, company } = experiences[n / PAGES_PER_YEAR];
