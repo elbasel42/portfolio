@@ -31,7 +31,7 @@ export const technologies: Tech[] = [
   },
   {
     icon: TbBrandReactNative,
-    title: "React Native",
+    title: "Native",
     className: "text-blue-400",
   },
   {
