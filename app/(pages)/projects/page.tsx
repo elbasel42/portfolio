@@ -9,8 +9,8 @@ const pacifico = Pacifico({
 const ProjectsPage = () => {
   return (
     <main className="h-[100dvh] flex items-center justify-center">
-      <Birds />
-      {/* <Topology /> */}
+      {/* <Birds /> */}
+      <Topology />
       <HomeButton />
       <h1
         className={twMerge(

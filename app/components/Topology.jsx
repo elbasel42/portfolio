@@ -8,11 +8,13 @@ import { sleep } from "@app/utils";
 export const Topology = () => {
   const [threeReady, setThreeReady] = useState(false);
   const [vantaReady, setVantaReady] = useState(false);
+  const [pReady, setPReady] = useState(false);
   const [bgHidden, setBgHidden] = useState(true);
 
   const initVanta = () => {
-    if (!window.THREE || !window.VANTA) {
+    if (!window.THREE || !window.VANTA || !window.p5) {
       setTimeout(initVanta, 1000);
+      return;
     }
 
     const effect = window.VANTA.TOPOLOGY({
@@ -26,6 +28,8 @@ export const Topology = () => {
       scaleMobile: 1.0,
       color: 0x964e63,
       backgroundColor: 0x0,
+      THREE: window.THREE,
+      p5: window.p5,
     });
     setBgHidden(false);
     return effect;
@@ -33,7 +37,7 @@ export const Topology = () => {
 
   //* initial load
   useEffect(() => {
-    if (!threeReady || !vantaReady) return;
+    if (!threeReady || !vantaReady || !pReady) return;
 
     const vantaEffect = initVanta();
 
@@ -53,6 +57,10 @@ export const Topology = () => {
           bgHidden && "opacity-0"
         )}
       ></div>
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
+        onLoad={() => sleep(1).then(() => setPReady(true))}
+      />
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
         onReady={() => sleep(1).then(() => setThreeReady(true))}
