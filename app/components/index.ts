@@ -11,8 +11,12 @@ import { SlideInFromLeft } from "./SlideInFromLeft";
 import { Globe } from "./Globe";
 import { HomeButton } from "./HomeButton";
 import { Rings } from "./Rings";
+import { Birds } from "./Birds";
+import { Topology } from "./Topology";
 
 export {
+  Topology,
+  Birds,
   Rings,
   HomeButton,
   Button,
