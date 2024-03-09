@@ -43,7 +43,7 @@ export const technologies: Tech[] = [
     icon: IoLogoPwa,
     title: "PWA",
     className: "text-white",
-  {
+  },
   {
     icon: SiTailwindcss,
     title: "Tailwind",
