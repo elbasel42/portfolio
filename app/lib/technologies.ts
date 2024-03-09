@@ -38,12 +38,12 @@ export const technologies: Tech[] = [
     icon: SiRedux,
     title: "Redux",
     className: "text-purple-600",
-  },
+  },  
   {
-    icon: TbBrandNextjs,
-    title: "NextJs",
+    icon: IoLogoPwa,
+    title: "PWA",
     className: "text-white",
-  },
+  {
   {
     icon: SiTailwindcss,
     title: "Tailwind",
@@ -76,8 +76,8 @@ export const technologies: Tech[] = [
     className: "text-purple-800",
   },
   {
-    icon: IoLogoPwa,
-    title: "PWA",
+    icon: TbBrandNextjs,
+    title: "NextJs",
     className: "text-white",
   },
 ];
