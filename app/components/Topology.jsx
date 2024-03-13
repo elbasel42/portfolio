@@ -25,7 +25,7 @@ export const Topology = () => {
       minHeight: 200.0,
       minWidth: 200.0,
       scale: 1.0,
-      scaleMobile: 1.0,
+      scaleMobile: 0.5,
       color: 0x964e63,
       backgroundColor: 0x0,
       THREE: window.THREE,
