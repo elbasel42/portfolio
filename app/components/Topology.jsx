@@ -53,7 +53,7 @@ export const Topology = () => {
       <div
         id="topologyElem"
         className={twMerge(
-          "duration-2000 -z-10 absolute inset-0 h-screen w-screen",
+          "duration-2000 -z-10 fixed inset-0 h-screen w-screen",
           bgHidden && "opacity-0"
         )}
       ></div>
