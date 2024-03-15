@@ -36,7 +36,7 @@ export async function sendMail(formData: FormData) {
     body,
   });
   const senderInfo = await transporter.sendMail({
-    from: '"Abdelrahman Elbasel" <abdelrahman.elbasel42@gmail.com>',
+    from: `"Abdelrahman Elbasel" <${process.env.NODEMAILER_USER}>`,
     to: email,
     subject: "Thanks for reaching out!",
     html: emailHTML,
