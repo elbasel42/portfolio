@@ -12,7 +12,7 @@ export const AboutPageDownArrow = ({ id }: AboutPageDownArrowProps) => {
       onClick={() =>
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
       }
-      className="absolute cursor-pointer w-8 h-8 bounce bottom-[6rem] md:bottom-10"
+      className="absolute cursor-pointer w-8 h-8 bounce bottom-[4rem] md:bottom-10"
     />
   );
 };
