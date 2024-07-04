@@ -28,8 +28,6 @@ const AboutPage = () => {
           <AboutPageDownArrow id="bio" />
         </AboutPageSection>
         <AboutPageSection id="bio" className="relative items-center px-4">
-          <AboutPageTitle text="Bio" />
-          <Bio />
           <AboutPageDownArrow id="tech" />
         </AboutPageSection>
         <AboutPageSection id="tech">
