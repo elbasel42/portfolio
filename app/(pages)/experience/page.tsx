@@ -81,7 +81,7 @@ const ExperiencePage = () => {
           if (isEmpty)
             return (
               <ScreenLine key={n}>
-                <Quote />
+                {/* <Quote /> */}
               </ScreenLine>
             );
 
